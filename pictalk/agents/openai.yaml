@@ -1,0 +1,4 @@
+interface:
+  display_name: "PicTalk"
+  short_description: "Turn articles into clear talk-ready infographics"
+  default_prompt: "Use $pictalk to turn this article into a concise set of presentation-ready infographics with varied diagram forms."

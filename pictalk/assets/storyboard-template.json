@@ -1,0 +1,62 @@
+{
+  "project": {
+    "title": "示例标题",
+    "source_language": "zh-CN",
+    "output_language": "zh-CN",
+    "audience": "内部演讲",
+    "aspect_ratio": "16:9",
+    "card_count_rationale": "源材料只有一个核心转变，适合先做一张锚点图。",
+    "allow_visible_pictalk_brand": false
+  },
+  "palette": {
+    "title_navy": "#071B49",
+    "primary_blue": "#0757D8",
+    "green": "#128348",
+    "orange": "#E77800",
+    "purple": "#5A2BAE",
+    "background": "#FFFFFF"
+  },
+  "source_notes": [],
+  "cards": [
+    {
+      "id": "card-01",
+      "title": "认知转变：从旧模式到新模式",
+      "subtitle": "用一张图讲清楚价值路径的变化",
+      "layout_type": "transformation",
+      "primary_pattern": "transformation",
+      "supporting_patterns": ["arrow-flow", "conclusion-band"],
+      "thesis": "这张图解释旧模式如何转向新模式，以及为什么新模式更能产生结果。",
+      "composition": {
+        "dominant_structure": "左右两区通过大箭头连接，底部用结论条收束。",
+        "not_card_grid": true,
+        "visible_marks": ["左右分区", "大箭头", "编号", "底部结论条"]
+      },
+      "canvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "sections": [
+        {
+          "id": "section-01",
+          "heading": "过去：旧模式",
+          "icon": "file-text",
+          "body": [
+            "动作先行",
+            "价值难以沉淀"
+          ],
+          "source_ids": []
+        }
+      ],
+      "connectors": [],
+      "conclusion": "核心结论：把价值路径讲清楚，行动才有共同方向。",
+      "text_ledger": [
+        "认知转变：从旧模式到新模式",
+        "用一张图讲清楚价值路径的变化",
+        "过去：旧模式",
+        "动作先行",
+        "价值难以沉淀",
+        "核心结论：把价值路径讲清楚，行动才有共同方向。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+.DS_Store
+outputs/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.pdf
+*.log
+node_modules/
+__pycache__/
+.venv/
+
