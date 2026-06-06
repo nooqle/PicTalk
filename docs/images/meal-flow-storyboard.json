@@ -1,0 +1,154 @@
+{
+  "project": {
+    "title": "用户操作流程图：餐食 AI 识别报告",
+    "source_language": "zh-CN",
+    "output_language": "zh-CN",
+    "audience": "产品方案说明与功能演示",
+    "aspect_ratio": "3:2",
+    "card_count_rationale": "用户只需要一张流程图说明从登录到流式报告输出的完整链路。",
+    "allow_visible_pictalk_brand": false
+  },
+  "palette": {
+    "title_navy": "#071B49",
+    "primary_blue": "#0757D8",
+    "green": "#128348",
+    "orange": "#E77800",
+    "purple": "#5A2BAE",
+    "background": "#FFFFFF"
+  },
+  "source_notes": [
+    {
+      "id": "S1",
+      "quote_or_summary": "截图流程包含 AI 独立入口、上传或拍照、AI 识别过程、Markdown 流式输出四个关键阶段。",
+      "location": "provided product flow screenshot"
+    }
+  ],
+  "cards": [
+    {
+      "id": "meal-flow",
+      "title": "用户操作流程图：餐食 AI 识别报告",
+      "subtitle": "从 AI 独立入口到 Markdown 流式输出的四步链路",
+      "layout_type": "premium-process-flow",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "process-flow",
+      "supporting_patterns": ["stage-spine", "stream-output", "checkpoint-row", "conclusion-band"],
+      "thesis": "这条流程把用户的一餐照片转成可解释、可追踪、可流式呈现的营养报告。",
+      "composition": {
+        "dominant_structure": "横向四阶段流程主轴，底部流式输出带和质量检查点收束。",
+        "not_card_grid": true,
+        "visible_marks": ["四阶段主轴", "方向箭头", "流式输出", "检查点", "结论带"]
+      },
+      "canvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "stages": [
+        {
+          "no": "01",
+          "title": "AI 独立入口",
+          "subtitle": "登录后进入餐食识别入口",
+          "icon": "log-in",
+          "tone": "blue",
+          "body": ["完成登录与身份确认", "点击 AI 图片识别", "承接饮食档案上下文"]
+        },
+        {
+          "no": "02",
+          "title": "上传 / 拍照",
+          "subtitle": "把一餐照片变成可分析输入",
+          "icon": "camera",
+          "tone": "orange",
+          "body": ["拍照或相册上传", "自动裁切餐盘区域", "保留原图供复核"]
+        },
+        {
+          "no": "03",
+          "title": "AI 识别过程",
+          "subtitle": "检测食物、份量和营养结构",
+          "icon": "scan",
+          "tone": "green",
+          "body": ["食物类别识别", "份量与热量估算", "置信度与异常校验"]
+        },
+        {
+          "no": "04",
+          "title": "Markdown 流式输出",
+          "subtitle": "边识别边生成可读报告",
+          "icon": "report",
+          "tone": "purple",
+          "body": ["总热量与宏量营养", "关键风险提示", "个性化饮食建议"]
+        }
+      ],
+      "stream": {
+        "title": "报告以 Markdown 流式输出",
+        "subtitle": "后端逐段返回 Markdown，前端边接收边渲染，不强行拆成死板卡片。",
+        "icon": "stream",
+        "tone": "green",
+        "items": ["识别食物类别", "估算克重与营养", "生成膳食解读", "持续追加报告段落"]
+      },
+      "checkpoints": [
+        {
+          "title": "入口承接",
+          "body": "AI 功能有独立入口，用户知道这一步专门处理餐食识别。",
+          "icon": "camera",
+          "tone": "orange"
+        },
+        {
+          "title": "过程可见",
+          "body": "识别食物、估算克重、计算营养结构的过程需要被用户看见。",
+          "icon": "check",
+          "tone": "green"
+        },
+        {
+          "title": "流式可读",
+          "body": "报告按 Markdown 段落持续输出，摘要、细项和建议顺序到达。",
+          "icon": "report",
+          "tone": "blue"
+        }
+      ],
+      "conclusion": "核心结论：这不是一次性上传动作，而是一条从 AI 入口、餐食输入、识别过程到 Markdown 流式报告的用户操作链路。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "meal",
+      "text_ledger": [
+        "用户操作流程图：餐食 AI 识别报告",
+        "从 AI 独立入口到 Markdown 流式输出的四步链路",
+        "01",
+        "AI 独立入口",
+        "登录后进入餐食识别入口",
+        "完成登录与身份确认",
+        "点击 AI 图片识别",
+        "承接饮食档案上下文",
+        "02",
+        "上传 / 拍照",
+        "把一餐照片变成可分析输入",
+        "拍照或相册上传",
+        "自动裁切餐盘区域",
+        "保留原图供复核",
+        "03",
+        "AI 识别过程",
+        "检测食物、份量和营养结构",
+        "食物类别识别",
+        "份量与热量估算",
+        "置信度与异常校验",
+        "04",
+        "Markdown 流式输出",
+        "边识别边生成可读报告",
+        "总热量与宏量营养",
+        "关键风险提示",
+        "个性化饮食建议",
+        "报告以 Markdown 流式输出",
+        "后端逐段返回 Markdown，前端边接收边渲染，不强行拆成死板卡片。",
+        "识别食物类别",
+        "估算克重与营养",
+        "生成膳食解读",
+        "持续追加报告段落",
+        "入口承接",
+        "AI 功能有独立入口，用户知道这一步专门处理餐食识别。",
+        "过程可见",
+        "识别食物、估算克重、计算营养结构的过程需要被用户看见。",
+        "流式可读",
+        "报告按 Markdown 段落持续输出，摘要、细项和建议顺序到达。",
+        "核心结论：这不是一次性上传动作，而是一条从 AI 入口、餐食输入、识别过程到 Markdown 流式报告的用户操作链路。"
+      ]
+    }
+  ]
+}

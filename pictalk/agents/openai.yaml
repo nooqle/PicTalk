@@ -1,4 +1,4 @@
 interface:
   display_name: "PicTalk"
-  short_description: "Turn articles into clear talk-ready infographics"
-  default_prompt: "Use $pictalk to turn this article into a concise set of presentation-ready infographics with varied diagram forms."
+  short_description: "Turn articles into premium text-accurate infographics"
+  default_prompt: "Use $pictalk to turn this article into premium presentation-ready infographics. Prefer locked premium layouts, build a storyboard first, validate text_ledger, then render text deterministically."

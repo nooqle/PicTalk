@@ -6,6 +6,12 @@ Use this library to choose the primary diagram form for each image. A polished o
 
 Choose the pattern from the source logic, not from visual habit.
 
+If the user asks for a polished one-image explanation, map the pattern to a premium renderer layout first:
+
+- hierarchy / maturity / tier / "high brings low" -> `premium-hierarchy-diffusion`
+- loop / flywheel / feedback / translation cycle -> `premium-cycle-system`
+- old state / bridge / new state -> `premium-transformation-logic`
+
 For `3+` images, use at least `3` distinct primary patterns unless the user explicitly requests a uniform deck. If the storyboard lists only `card-grid`, revise it before rendering.
 
 ## Pattern Catalog

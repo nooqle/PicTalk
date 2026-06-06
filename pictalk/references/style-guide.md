@@ -54,10 +54,44 @@ Customization rule: preserve contrast and assign colors by meaning, not decorati
 - Conclusion band: full-width saturated blue bar near the bottom with a shield/target/rocket icon and one strong takeaway.
 - Mini-metric row: 3-5 compact boxes under a conclusion band when the card needs measurable outputs.
 - Structural marks: timelines, arrows, ladders, matrices, swimlanes, funnels, loops, brackets, axes, and connectors.
+- Premium hierarchy components: left gradient upgrade rail, four semantic layer modules, right tier panel with callout and emphasized top tier, curved connectors, icon-led mechanism chain, summary card row.
+- Premium transformation components: three tall zones, emphasized middle mechanism, vertical relation labels, essence pills, bottom metric row.
 
 Cards are local containers. They are not the default composition. Every image needs a primary diagram structure that makes the logic visible before the reader finishes reading the text.
 
 ## Layout Families
+
+### Premium Hierarchy Diffusion
+
+Use when a single image must explain hierarchy, maturity, demand levels, capability stacks, or "high brings low" logic.
+
+- 3:4 canvas at `1086x1448`.
+- Left gradient rail must name the upward axis.
+- Middle stack must have exactly four semantic layers.
+- Right side must have exactly three related tiers.
+- Add a short `tier_callout` when the right side needs a benchmark-like "why this tier matters" emphasis.
+- Bottom must include three mechanisms, 2-3 summary cards, and a conclusion band.
+
+### Premium Cycle System
+
+Use for a reference-grade loop or flywheel.
+
+- Top flow strip with 3-5 icon labels.
+- Large center circle with a short mechanism phrase.
+- Double-ring path with 5-6 nodes attached to the loop.
+- Inner phase chips around the center for naming, validating, compressing, or writing back.
+- Bottom output row and conclusion band.
+
+### Premium Transformation Logic
+
+Use for old state -> mechanism -> new state.
+
+- Three tall zones, with the middle mechanism visually emphasized.
+- Each zone must include an `insight` sentence so it reads as a state judgment, not an empty card.
+- Relation labels must be visible on the arrows.
+- Each zone needs an essence pill.
+- Reference-grade cards need a `conversion_artifact` band that shows what reusable asset the flow produces.
+- Bottom metric row and conclusion band close the argument.
 
 ### Transformation
 
@@ -109,6 +143,16 @@ Use for agendas, version sequences, incident histories, and delivery plans.
 - Use tick labels and milestone nodes.
 - Show outputs at the end of each time box.
 - Use arrows to show progression.
+
+### Premium Process Flow
+
+Use for product journeys or AI workflows where the reader must see what the user does, what the system does, and how the output arrives.
+
+- Keep the top spine to exactly four main stages.
+- Arrows should sit between stage cards and point to real next actions.
+- Put streaming or progressive output in a dedicated band, not as a fourth-row paragraph.
+- Use checkpoints for trust, visibility, and output quality rather than extra steps.
+- Avoid wrapping long mixed English/Chinese labels inside narrow cards; shorten the local label or use the subtitle.
 
 ### Matrix
 

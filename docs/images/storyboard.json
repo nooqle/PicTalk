@@ -1,0 +1,529 @@
+{
+  "project": {
+    "title": "从信号到囫囵语：人和 Agent 的共同语言",
+    "source_language": "zh-CN",
+    "output_language": "zh-CN",
+    "audience": "方法论文章配图与内部演讲",
+    "aspect_ratio": "3:4",
+    "card_count_rationale": "文章有层级升级、循环转译、状态转化三条核心逻辑，适合生成 3 张 premium 信息图。",
+    "allow_visible_pictalk_brand": false
+  },
+  "palette": {
+    "title_navy": "#071B49",
+    "primary_blue": "#0757D8",
+    "green": "#128348",
+    "orange": "#E77800",
+    "purple": "#5A2BAE",
+    "background": "#FFFFFF"
+  },
+  "source_notes": [
+    {
+      "id": "S1",
+      "quote_or_summary": "人和 Agent 的协同首先是边界上的协同，需要持续区分语言、命名、验证和完成。",
+      "location": "第 2 段"
+    },
+    {
+      "id": "S2",
+      "quote_or_summary": "囫囵语是一种被压缩过的整体，短信号背后携带厚结构。",
+      "location": "第 3 段"
+    },
+    {
+      "id": "S3",
+      "quote_or_summary": "默会知识可以被逐步转译为可言说、可共享、可验证、可写回的公共结构。",
+      "location": "第 5 段"
+    }
+  ],
+  "cards": [
+    {
+      "id": "card-01",
+      "title": "共同语言如何长出来",
+      "subtitle": "从混乱信号到可复用囫囵语的四层升级",
+      "layout_type": "premium-hierarchy-diffusion",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "dense",
+      "primary_pattern": "hierarchy-diffusion",
+      "supporting_patterns": ["layer-map", "audience-tier", "mechanism-chain", "conclusion-band"],
+      "thesis": "共同语言不是先设计出来的，而是在感受、命名、验证、写回的层级升级中长出来。",
+      "composition": {
+        "dominant_structure": "左侧升级箭头，中间四层结构，右侧三类协同成熟度，底部机制链和结论带。",
+        "not_card_grid": true,
+        "visible_marks": ["上升箭头", "四层模块", "三个人群层", "跨区连接", "机制链", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "axis": {
+        "label": "协同语言逐级升级",
+        "direction": "up"
+      },
+      "layers": [
+        {
+          "id": "signal",
+          "no": "1",
+          "title": "感受信号",
+          "type": "边界感知层",
+          "icon": "spark",
+          "tone": "orange",
+          "typical_behavior": "觉得不对、状态不干净、这里有漂移",
+          "core_blocker": "只停留在人的经验里，难以共享",
+          "matched_audience": "人类主导的即时纠偏",
+          "essence": "默会起点",
+          "source_ids": ["S3"]
+        },
+        {
+          "id": "boundary",
+          "no": "2",
+          "title": "命名边界",
+          "type": "语言校准层",
+          "icon": "target",
+          "tone": "blue",
+          "typical_behavior": "区分语言、工具、操作和完成",
+          "core_blocker": "说出来像理解了，理解了像做完了",
+          "matched_audience": "人和 Agent 的共同校准",
+          "essence": "边界成形",
+          "source_ids": ["S1"]
+        },
+        {
+          "id": "writeback",
+          "no": "3",
+          "title": "验证写回",
+          "type": "公共结构层",
+          "icon": "check",
+          "tone": "green",
+          "typical_behavior": "保存失败样本，区分验证层级",
+          "core_blocker": "没有写回就无法复用",
+          "matched_audience": "协同执行中的状态闭环",
+          "essence": "经验可验证",
+          "source_ids": ["S3"]
+        },
+        {
+          "id": "holophrase",
+          "no": "4",
+          "title": "囫囵语调用",
+          "type": "压缩调用层",
+          "icon": "network",
+          "tone": "purple",
+          "typical_behavior": "一句话唤起边界、节奏、验证和收尾",
+          "core_blocker": "压缩后仍要不失真",
+          "matched_audience": "成熟的人机协同默契",
+          "essence": "共同语言",
+          "source_ids": ["S2"]
+        }
+      ],
+      "user_tiers": [
+        {
+          "id": "A",
+          "label": "A 信号层",
+          "headline": "人先感到漂移，Agent 还不能稳定还原",
+          "body": ["即时感受", "经验判断", "临场纠偏"],
+          "tone": "orange"
+        },
+        {
+          "id": "B",
+          "label": "B 结构层",
+          "headline": "双方开始用同一套边界检查行动",
+          "body": ["命名边界", "验证层级", "失败样本"],
+          "tone": "blue"
+        },
+        {
+          "id": "C",
+          "label": "C 调用层",
+          "headline": "短信号可以召回完整协同方法",
+          "body": ["协同执行卡", "哒哒哒", "共同收尾"],
+          "tone": "green"
+        }
+      ],
+      "tier_callout": {
+        "text": "一句话能唤起边界、验证和共同收尾",
+        "icon": "trophy",
+        "tone": "orange"
+      },
+      "connectors": [
+        { "from_layer": "1", "to_tier": "A", "tone": "orange", "kind": "curved-arrow" },
+        { "from_layer": "2", "to_tier": "B", "tone": "blue", "kind": "curved-arrow" },
+        { "from_layer": "3", "to_tier": "B", "tone": "green", "kind": "curved-arrow" },
+        { "from_layer": "4", "to_tier": "C", "tone": "purple", "kind": "curved-arrow" }
+      ],
+      "mechanisms_title": "三步扩散机制",
+      "mechanisms": [
+        {
+          "no": "1",
+          "title": "感受提纯",
+          "body": "把模糊的不对劲提炼成可讨论信号",
+          "icon": "clipboard",
+          "tone": "orange"
+        },
+        {
+          "no": "2",
+          "title": "边界命名",
+          "body": "把语言、行动、验证和完成拆开",
+          "icon": "target",
+          "tone": "blue"
+        },
+        {
+          "no": "3",
+          "title": "验证写回",
+          "body": "把错误样本变成下一轮协同约束",
+          "icon": "layers",
+          "tone": "green"
+        }
+      ],
+      "summary_title": "结构判断",
+      "summary_cards": [
+        {
+          "title": "囫囵语不是省字",
+          "body": "它是把复杂协同压缩成可共享、可复用的厚结构。",
+          "icon": "trophy",
+          "tone": "blue"
+        },
+        {
+          "title": "默会知识不是障碍",
+          "body": "关键部分被转译后，会成为人和 Agent 的公共结构。",
+          "icon": "network",
+          "tone": "green"
+        }
+      ],
+      "conclusion": "核心结论：共同语言是在边界校准、失败写回和重复调用中逐步长出来的。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "target",
+      "text_ledger": [
+        "共同语言如何长出来",
+        "从混乱信号到可复用囫囵语的四层升级",
+        "协同语言逐级升级",
+        "用户层级",
+        "典型行为",
+        "核心卡点",
+        "匹配人群",
+        "需求本质",
+        "1",
+        "感受信号",
+        "边界感知层",
+        "觉得不对、状态不干净、这里有漂移",
+        "只停留在人的经验里，难以共享",
+        "人类主导的即时纠偏",
+        "默会起点",
+        "2",
+        "命名边界",
+        "语言校准层",
+        "区分语言、工具、操作和完成",
+        "说出来像理解了，理解了像做完了",
+        "人和 Agent 的共同校准",
+        "边界成形",
+        "3",
+        "验证写回",
+        "公共结构层",
+        "保存失败样本，区分验证层级",
+        "没有写回就无法复用",
+        "协同执行中的状态闭环",
+        "经验可验证",
+        "4",
+        "囫囵语调用",
+        "压缩调用层",
+        "一句话唤起边界、节奏、验证和收尾",
+        "压缩后仍要不失真",
+        "成熟的人机协同默契",
+        "共同语言",
+        "A 信号层",
+        "人先感到漂移，Agent 还不能稳定还原",
+        "即时感受",
+        "经验判断",
+        "临场纠偏",
+        "B 结构层",
+        "双方开始用同一套边界检查行动",
+        "验证层级",
+        "失败样本",
+        "C 调用层",
+        "短信号可以召回完整协同方法",
+        "协同执行卡",
+        "哒哒哒",
+        "共同收尾",
+        "一句话能唤起边界、验证和共同收尾",
+        "三步扩散机制",
+        "感受提纯",
+        "把模糊的不对劲提炼成可讨论信号",
+        "边界命名",
+        "把语言、行动、验证和完成拆开",
+        "验证写回",
+        "把错误样本变成下一轮协同约束",
+        "结构判断",
+        "囫囵语不是省字",
+        "它是把复杂协同压缩成可共享、可复用的厚结构。",
+        "默会知识不是障碍",
+        "关键部分被转译后，会成为人和 Agent 的公共结构。",
+        "核心结论：共同语言是在边界校准、失败写回和重复调用中逐步长出来的。"
+      ]
+    },
+    {
+      "id": "card-02",
+      "title": "默会知识的协同转译循环",
+      "subtitle": "从人的边界感到 Agent 可复用约束",
+      "layout_type": "premium-cycle-system",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "cycle-system",
+      "supporting_patterns": ["top-flow", "radial-loop", "output-row", "conclusion-band"],
+      "thesis": "默会知识不会被消灭，而是在协同中被提取、命名、验证、写回，并变成下一轮可调用的方法。",
+      "composition": {
+        "dominant_structure": "顶部流程条，中心圆形命题，六个环形节点，底部产出行和结论带。",
+        "not_card_grid": true,
+        "visible_marks": ["顶部流程", "中心圆", "环形箭头", "六个节点", "产出行", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "top_flow": [
+        { "label": "感受出现", "icon": "spark" },
+        { "label": "边界命名", "icon": "target" },
+        { "label": "验证写回", "icon": "check" },
+        { "label": "压缩调用", "icon": "refresh" }
+      ],
+      "center": {
+        "main": "感知经验 → 公共结构",
+        "lines": ["共同语言的生成循环", "不是一次性 SOP"]
+      },
+      "loop_nodes": [
+        {
+          "no": "1",
+          "title": "感到不对",
+          "subtitle": "边界感先于语言出现",
+          "icon": "spark",
+          "tone": "orange"
+        },
+        {
+          "no": "2",
+          "title": "说清问题",
+          "subtitle": "把漂移从感受变成可讨论对象",
+          "icon": "edit",
+          "tone": "blue"
+        },
+        {
+          "no": "3",
+          "title": "拆分边界",
+          "subtitle": "区分语言、工具、操作和完成",
+          "icon": "target",
+          "tone": "purple"
+        },
+        {
+          "no": "4",
+          "title": "验证状态",
+          "subtitle": "确认命名是否真的改变行动",
+          "icon": "check",
+          "tone": "green"
+        },
+        {
+          "no": "5",
+          "title": "写回约束",
+          "subtitle": "把失败样本变成下一轮规则",
+          "icon": "clipboard",
+          "tone": "blue"
+        },
+        {
+          "no": "6",
+          "title": "压缩调用",
+          "subtitle": "让短信号召回完整协同方法",
+          "icon": "refresh",
+          "tone": "orange"
+        }
+      ],
+      "outputs_title": "循环产出",
+      "outputs": [
+        {
+          "title": "边界词汇",
+          "body": "语言是不是行动，验证是不是完成",
+          "icon": "book-open",
+          "tone": "blue"
+        },
+        {
+          "title": "失败样本",
+          "body": "把漂移记录为可复盘的证据",
+          "icon": "clipboard",
+          "tone": "orange"
+        },
+        {
+          "title": "协同节奏",
+          "body": "校准、执行、检查、收尾",
+          "icon": "refresh",
+          "tone": "green"
+        },
+        {
+          "title": "囫囵语",
+          "body": "短词召回厚结构",
+          "icon": "network",
+          "tone": "purple"
+        }
+      ],
+      "conclusion": "核心结论：真正可复用的协同，不是把默会知识清空，而是把关键部分转译成公共结构。",
+      "conclusion_style": "green",
+      "conclusion_icon": "network",
+      "text_ledger": [
+        "默会知识的协同转译循环",
+        "从人的边界感到 Agent 可复用约束",
+        "感受出现",
+        "边界命名",
+        "验证写回",
+        "压缩调用",
+        "感知经验 → 公共结构",
+        "共同语言的生成循环",
+        "不是一次性 SOP",
+        "1",
+        "感到不对",
+        "边界感先于语言出现",
+        "2",
+        "说清问题",
+        "把漂移从感受变成可讨论对象",
+        "3",
+        "拆分边界",
+        "区分语言、工具、操作和完成",
+        "4",
+        "验证状态",
+        "确认命名是否真的改变行动",
+        "5",
+        "写回约束",
+        "把失败样本变成下一轮规则",
+        "6",
+        "压缩调用",
+        "让短信号召回完整协同方法",
+        "循环产出",
+        "边界词汇",
+        "语言是不是行动，验证是不是完成",
+        "失败样本",
+        "把漂移记录为可复盘的证据",
+        "协同节奏",
+        "校准、执行、检查、收尾",
+        "囫囵语",
+        "短词召回厚结构",
+        "核心结论：真正可复用的协同，不是把默会知识清空，而是把关键部分转译成公共结构。"
+      ]
+    },
+    {
+      "id": "card-03",
+      "title": "从信号到囫囵语的协同转化",
+      "subtitle": "旧状态、边界机制与新语言之间的关键跃迁",
+      "layout_type": "premium-transformation-logic",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "transformation-logic",
+      "supporting_patterns": ["three-zone", "relation-arrow", "metric-row", "conclusion-band"],
+      "thesis": "协同升级的关键不是能力突然跃迁，而是把混乱信号转成双方都能还原的厚结构。",
+      "composition": {
+        "dominant_structure": "三段式转化图，中间机制高亮，两侧状态通过箭头关系连接，底部指标和结论收束。",
+        "not_card_grid": true,
+        "visible_marks": ["三段分区", "中间高亮", "关系箭头", "指标行", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "zones": [
+        {
+          "id": "signal",
+          "label": "旧状态",
+          "title": "混乱前进",
+          "icon": "folder",
+          "tone": "gray",
+          "insight": "材料是散的，只有人能凭经验判断。",
+          "bullets": [
+            "语言、工具、操作容易被压成一团",
+            "说出来像理解了，做了像完成了",
+            "人的边界感只能靠临场纠偏"
+          ],
+          "essence": "经验维持"
+        },
+        {
+          "id": "boundary",
+          "label": "中间机制",
+          "title": "边界校准",
+          "icon": "target",
+          "tone": "blue",
+          "emphasis": true,
+          "insight": "把混在一起的动作拆成可验证的关口。",
+          "bullets": [
+            "区分语言是不是行动",
+            "区分命名是不是理解",
+            "区分验证是不是完成"
+          ],
+          "essence": "共同校准"
+        },
+        {
+          "id": "holophrase",
+          "label": "新状态",
+          "title": "囫囵语调用",
+          "icon": "network",
+          "tone": "green",
+          "insight": "短语背后能召回角色、证据和收尾。",
+          "bullets": [
+            "短信号携带厚结构",
+            "一句话召回角色、验证和收尾",
+            "复杂协同被压缩但不失真"
+          ],
+          "essence": "结构复用"
+        }
+      ],
+      "relations": [
+        { "from": "signal", "to": "boundary", "label": "命名与拆分", "tone": "blue" },
+        { "from": "boundary", "to": "holophrase", "label": "验证与写回", "tone": "green" }
+      ],
+      "metrics": [
+        { "label": "边界", "value": "语言 ≠ 行动", "color": "#0757D8" },
+        { "label": "验证", "value": "命名 ≠ 理解", "color": "#E77800" },
+        { "label": "完成", "value": "操作 ≠ 收口", "color": "#128348" }
+      ],
+      "conversion_artifact": {
+        "title": "协同资产包",
+        "subtitle": "边界词汇、验证规则和复用句式被打包成下一轮调用结构。",
+        "items": ["边界词汇", "验证规则", "复用句式"],
+        "icon": "layers",
+        "tone": "green"
+      },
+      "conclusion": "核心结论：人和 Agent 的共同语言，是从反复校准边界中长出的协同方法。",
+      "conclusion_style": "purple",
+      "conclusion_icon": "spark",
+      "text_ledger": [
+        "从信号到囫囵语的协同转化",
+        "旧状态、边界机制与新语言之间的关键跃迁",
+        "核心转化判断",
+        "协同升级的关键不是能力突然跃迁，而是把混乱信号转成双方都能还原的厚结构。",
+        "旧状态",
+        "混乱前进",
+        "材料是散的，只有人能凭经验判断。",
+        "语言、工具、操作容易被压成一团",
+        "说出来像理解了，做了像完成了",
+        "人的边界感只能靠临场纠偏",
+        "经验维持",
+        "中间机制",
+        "边界校准",
+        "把混在一起的动作拆成可验证的关口。",
+        "区分语言是不是行动",
+        "区分命名是不是理解",
+        "区分验证是不是完成",
+        "共同校准",
+        "新状态",
+        "囫囵语调用",
+        "短语背后能召回角色、证据和收尾。",
+        "短信号携带厚结构",
+        "一句话召回角色、验证和收尾",
+        "复杂协同被压缩但不失真",
+        "结构复用",
+        "命名与拆分",
+        "验证与写回",
+        "边界",
+        "语言 ≠ 行动",
+        "验证",
+        "命名 ≠ 理解",
+        "完成",
+        "操作 ≠ 收口",
+        "协同资产包",
+        "边界词汇、验证规则和复用句式被打包成下一轮调用结构。",
+        "边界词汇",
+        "验证规则",
+        "复用句式",
+        "核心结论：人和 Agent 的共同语言，是从反复校准边界中长出的协同方法。"
+      ]
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "project": {
-    "title": "示例标题",
+    "title": "示例：从信号到结构",
     "source_language": "zh-CN",
     "output_language": "zh-CN",
     "audience": "内部演讲",
-    "aspect_ratio": "16:9",
-    "card_count_rationale": "源材料只有一个核心转变，适合先做一张锚点图。",
+    "aspect_ratio": "3:4",
+    "card_count_rationale": "示例素材只有一个核心转化，适合用一张 premium 转化图说明。",
     "allow_visible_pictalk_brand": false
   },
   "palette": {
@@ -16,46 +16,138 @@
     "purple": "#5A2BAE",
     "background": "#FFFFFF"
   },
-  "source_notes": [],
+  "source_notes": [
+    {
+      "id": "S1",
+      "quote_or_summary": "示例：把模糊信号转化为可执行结构。",
+      "location": "sample"
+    }
+  ],
   "cards": [
     {
       "id": "card-01",
-      "title": "认知转变：从旧模式到新模式",
-      "subtitle": "用一张图讲清楚价值路径的变化",
-      "layout_type": "transformation",
-      "primary_pattern": "transformation",
-      "supporting_patterns": ["arrow-flow", "conclusion-band"],
-      "thesis": "这张图解释旧模式如何转向新模式，以及为什么新模式更能产生结果。",
+      "title": "从信号到结构",
+      "subtitle": "把模糊感受变成可执行协同",
+      "layout_type": "premium-transformation-logic",
+      "layout_family": "premium",
+      "quality_target": "presentation",
+      "density": "medium",
+      "primary_pattern": "transformation-logic",
+      "supporting_patterns": ["three-zone", "relation-arrow", "metric-row", "conclusion-band"],
+      "thesis": "有效协同需要把模糊信号拆成边界、验证和行动。",
       "composition": {
-        "dominant_structure": "左右两区通过大箭头连接，底部用结论条收束。",
+        "dominant_structure": "三段式转化图，中间机制高亮，底部指标和结论收束。",
         "not_card_grid": true,
-        "visible_marks": ["左右分区", "大箭头", "编号", "底部结论条"]
+        "visible_marks": ["三段分区", "中间高亮", "关系箭头", "指标行", "结论带"]
       },
       "canvas": {
-        "width": 1536,
-        "height": 1024
+        "width": 1086,
+        "height": 1448
       },
-      "sections": [
+      "zones": [
         {
-          "id": "section-01",
-          "heading": "过去：旧模式",
-          "icon": "file-text",
-          "body": [
-            "动作先行",
-            "价值难以沉淀"
+          "id": "signal",
+          "label": "输入",
+          "title": "模糊信号",
+          "icon": "spark",
+          "tone": "orange",
+          "insight": "材料先以感受和碎片出现。",
+          "bullets": [
+            "只是觉得不对",
+            "尚未形成边界",
+            "难以稳定复用"
           ],
-          "source_ids": []
+          "essence": "经验感受"
+        },
+        {
+          "id": "method",
+          "label": "机制",
+          "title": "边界校准",
+          "icon": "target",
+          "tone": "blue",
+          "emphasis": true,
+          "insight": "把模糊判断拆成可验证关口。",
+          "bullets": [
+            "命名问题",
+            "拆分验证",
+            "写回规则"
+          ],
+          "essence": "公共结构"
+        },
+        {
+          "id": "action",
+          "label": "输出",
+          "title": "可执行协同",
+          "icon": "check",
+          "tone": "green",
+          "insight": "输出变成下一轮可复用结构。",
+          "bullets": [
+            "角色更清楚",
+            "验证更明确",
+            "收尾可复盘"
+          ],
+          "essence": "行动闭环"
         }
       ],
-      "connectors": [],
-      "conclusion": "核心结论：把价值路径讲清楚，行动才有共同方向。",
+      "relations": [
+        { "from": "signal", "to": "method", "label": "命名", "tone": "blue" },
+        { "from": "method", "to": "action", "label": "写回", "tone": "green" }
+      ],
+      "metrics": [
+        { "label": "边界", "value": "感受 → 命名", "color": "#0757D8" },
+        { "label": "验证", "value": "判断 → 证据", "color": "#E77800" },
+        { "label": "行动", "value": "执行 → 收口", "color": "#128348" }
+      ],
+      "conversion_artifact": {
+        "title": "协同资产包",
+        "subtitle": "边界、验证和行动被打包成下一轮可调用结构。",
+        "items": ["边界词汇", "验证规则", "行动闭环"],
+        "icon": "layers",
+        "tone": "green"
+      },
+      "conclusion": "核心结论：把模糊信号转成公共结构，协同才会稳定变清楚。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "target",
       "text_ledger": [
-        "认知转变：从旧模式到新模式",
-        "用一张图讲清楚价值路径的变化",
-        "过去：旧模式",
-        "动作先行",
-        "价值难以沉淀",
-        "核心结论：把价值路径讲清楚，行动才有共同方向。"
+        "从信号到结构",
+        "把模糊感受变成可执行协同",
+        "核心转化判断",
+        "有效协同需要把模糊信号拆成边界、验证和行动。",
+        "输入",
+        "模糊信号",
+        "材料先以感受和碎片出现。",
+        "只是觉得不对",
+        "尚未形成边界",
+        "难以稳定复用",
+        "经验感受",
+        "机制",
+        "边界校准",
+        "把模糊判断拆成可验证关口。",
+        "命名问题",
+        "拆分验证",
+        "写回规则",
+        "公共结构",
+        "输出",
+        "可执行协同",
+        "输出变成下一轮可复用结构。",
+        "角色更清楚",
+        "验证更明确",
+        "收尾可复盘",
+        "行动闭环",
+        "命名",
+        "写回",
+        "边界",
+        "感受 → 命名",
+        "验证",
+        "判断 → 证据",
+        "行动",
+        "执行 → 收口",
+        "协同资产包",
+        "边界、验证和行动被打包成下一轮可调用结构。",
+        "边界词汇",
+        "验证规则",
+        "行动闭环",
+        "核心结论：把模糊信号转成公共结构，协同才会稳定变清楚。"
       ]
     }
   ]

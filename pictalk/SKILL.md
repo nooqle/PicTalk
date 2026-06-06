@@ -9,7 +9,9 @@ Turn source material into a small set of clean, talk-ready infographics that exp
 
 PicTalk is the workflow name, not a visible watermark. Do not place `PicTalk`, skill names, internal file names, or process labels inside final images unless the user explicitly requests branding.
 
-The outputs are text-accurate information graphics, not decorative AI posters. Use deterministic text rendering for all Chinese, English, numbers, labels, and formulas. Image generation may support backgrounds, icons, or decorative assets, but never rely on raster-generated text as the final text layer.
+The outputs are text-accurate information graphics, not decorative AI posters. All visible text must originate from the storyboard `text_ledger` and should be rendered with deterministic HTML/SVG/PPTX text layers by default. Image generation may be used as an optional visual-polish path, but do not depend on raster-generated text for Chinese, numbers, formulas, labels, or final delivery when a deterministic renderer is available.
+
+When the user asks for "one image that explains it", "有质感", "层级指示", "逻辑好的一张图", or a reference-grade article image, prefer a **premium locked layout** before any generic layout. Premium layouts use semantic slots such as layer behavior, blocker, audience, essence, relation, mechanism, output, and conclusion; do not reduce them to generic `sections`.
 
 ## Quick Start
 
@@ -20,12 +22,14 @@ The outputs are text-accurate information graphics, not decorative AI posters. U
    - `2-3 cards`: one thesis with two or three major logic branches.
    - `4-7 cards`: a dense article with multiple frameworks, phases, roles, or workflows.
    - More than `7 cards`: ask whether to split into chapters unless the user explicitly wants a long deck.
-4. Select a visual pattern per image. Avoid defaulting to card grids; cards are containers, not the composition. Use timelines, layer diagrams, arrow flows, matrices, loops, funnels, maps, pyramids, or mixed diagrams where the logic calls for them.
+4. Select a visual pattern per image. For reference-grade outputs, try premium layouts first: `premium-hierarchy-diffusion`, `premium-cycle-system`, `premium-transformation-logic`, or `premium-process-flow`. Use generic timelines, arrows, matrices, or layer stacks only when the premium layouts do not match the logic.
 5. Draft a storyboard JSON before rendering. Include exact text strings, primary visual pattern, layout type, visual hierarchy, icon ideas, palette roles, and the evidence each image is based on.
-6. Render with editable text layers using HTML/SVG, slide tooling, design software, or another deterministic renderer.
-7. Verify text accuracy, visual diversity, and absence of unintended visible branding before delivering PNG/PDF/SVG/PPTX outputs.
+6. Render images using the locked renderer first:
+   - **Primary**: HTML/CSS rendering via `scripts/render_storyboard.py`, using one of the supported locked layouts.
+   - **Optional polish**: if an image-capable model is available, construct prompts from [references/image-prompts.md](references/image-prompts.md), but keep final text deterministic unless the user explicitly accepts raster text risk.
+7. Validate text accuracy, visual diversity, and absence of unintended visible branding before delivering PNG/PDF/SVG/PPTX outputs.
 
-For visual grammar, read [references/style-guide.md](references/style-guide.md). For diagram selection, read [references/pattern-library.md](references/pattern-library.md). For storyboard structure, read [references/storyboard-schema.md](references/storyboard-schema.md). For text accuracy rules, read [references/text-accuracy.md](references/text-accuracy.md).
+For visual grammar, read [references/style-guide.md](references/style-guide.md). For locked layout selection, read [references/layouts.md](references/layouts.md). For diagram selection, read [references/pattern-library.md](references/pattern-library.md). For storyboard structure, read [references/storyboard-schema.md](references/storyboard-schema.md). For text accuracy rules, read [references/text-accuracy.md](references/text-accuracy.md). For optional image prompt construction, read [references/image-prompts.md](references/image-prompts.md).
 
 ## Workflow
 
@@ -44,8 +48,12 @@ If the source is unclear, mark uncertainty in the storyboard rather than inventi
 
 ### 2. Pick The Visual Pattern
 
-Match logic to a repeatable visual pattern. Load [references/pattern-library.md](references/pattern-library.md) for the full catalog.
+Match logic to a repeatable visual pattern, then bind that pattern to a renderer-supported locked layout. Load [references/layouts.md](references/layouts.md) before writing the storyboard.
 
+- `premium-hierarchy-diffusion`: 4-level hierarchy, right-side tiers, layer-to-tier connectors, mechanism row, summary cards, and conclusion band.
+- `premium-cycle-system`: top logic strip, central mechanism, 5-6 loop nodes, output row, and conclusion band.
+- `premium-transformation-logic`: old state -> mechanism -> new state with labeled relation arrows, metrics, and conclusion band.
+- `premium-process-flow`: 4-stage user or system workflow with a stage spine, directional arrows, stream/output band, checkpoint row, and conclusion band.
 - `transformation`: past -> present, old model -> new model, problem -> solution.
 - `timeline`: time boxes, version path, meeting agenda, history, rollout, or incident sequence.
 - `comparison`: two or three columns showing roles, responsibilities, metrics, or tradeoffs.
@@ -54,15 +62,11 @@ Match logic to a repeatable visual pattern. Load [references/pattern-library.md]
 - `arrow-flow`: ordered workflow with arrows, checkpoints, handoffs, and decisions.
 - `matrix`: categories crossed with evidence, owners, impact, or decision directions.
 - `map`: roles, owners, responsibilities, interfaces, and shared goals.
-- `pyramid`: hierarchy, priority, maturity, dependency, or strategic ladder.
-- `funnel`: filtering from broad evidence to selected cases, decisions, or actions.
-- `radial`: central thesis with surrounding drivers, consequences, or outputs.
-- `principles`: distilled rules, conclusions, or decision criteria.
-- `hybrid`: dense executive summary combining two forms; use sparingly.
+- `layer-stack`: hierarchy, priority, maturity, dependency, or strategic ladder.
 
 Prefer one dominant visual metaphor per image. If an image needs three unrelated metaphors, split it.
 
-Visual diversity rule: for `3+` images, use at least `3` distinct primary patterns. Do not produce a sequence where every image is a card grid, even when each grid looks clean.
+Visual diversity rule: for `3+` images, use at least `3` distinct renderer-supported layout types. Do not produce a sequence where every image is a card grid, even when each grid looks clean.
 
 ### 3. Decide Card Count
 
@@ -98,26 +102,56 @@ Composition gate before rendering:
 - Include visible structural marks where appropriate: arrows, axes, ladders, timelines, swimlanes, loops, brackets, connectors, badges, scales, or funnels.
 - Remove any visible `PicTalk` label, watermark, skill name, internal source path, or renderer label.
 
-### 5. Render Text Deterministically
+### 5. Render Images
 
-Do not ask an image model to draw final text. Acceptable renderers include:
+Render each card from the storyboard using the best available method.
 
-- HTML/CSS captured to PNG/PDF;
-- SVG with real `<text>` elements;
-- PPTX/Keynote/Google Slides-style shapes and text boxes;
-- Canvas only if text is drawn from exact strings and source artifacts remain editable or auditable.
+#### Primary Path: Locked HTML/CSS Rendering
 
-Use icon libraries, simple SVG icons, or generated icon assets without embedded text. If image generation is used, render blank visual assets first, then overlay text deterministically.
+Use `scripts/render_storyboard.py` as the default production path:
+
+1. Build a storyboard using only renderer-supported `layout_type` values from [references/layouts.md](references/layouts.md).
+2. Run `python scripts/validate_storyboard.py <storyboard.json>`.
+3. Run `python scripts/render_storyboard.py <storyboard.json> --output-dir <output-dir> --keep-html`.
+4. Run `python scripts/qa_rendered_html.py <output-dir>/<card-id>.html ...` when HTML files are kept.
+5. If the user supplied a visual benchmark, run `python scripts/qa_benchmark_image.py <benchmark.png> <output.png>` for the closest matching card. The gate checks size, edge gaps, bottom gap, and content coverage; failing it means the composition is still too sparse or off-frame.
+6. Inspect the generated PNG and HTML. Do not call the output final if visible blocks are misaligned, connector lines dominate the image, or large text areas feel like placeholders.
+
+Supported renderer layouts are:
+
+- `premium-hierarchy-diffusion`: reference-grade hierarchy image with 4 semantic layers, 3 user/audience tiers, optional tier callout, 3 icon-led mechanisms, summary cards, cross-connectors, and conclusion band.
+- `premium-cycle-system`: reference-grade operating loop with top strip, double-ring path, inner phase chips, 5-6 loop nodes, output cards, and conclusion band.
+- `premium-transformation-logic`: reference-grade input/gate/output conversion machine with zone insights, labeled arrows, conversion artifact band, metrics, and conclusion band.
+- `premium-process-flow`: reference-grade four-step workflow with fixed stages, arrows, stream output band, checkpoint row, and conclusion band.
+- `cycle`: one center thesis with 4-6 surrounding nodes, optional top flow, metric/output row, and conclusion band.
+- `layer-stack`: one upgrade ladder or demand hierarchy with 3-5 layers; optional right-side user tiers.
+- `transformation` / `comparison`: 2-3 zones connected by arrows.
+- `arrow-flow`: 3-6 ordered steps with directional handoff.
+- `timeline`: 3-6 milestones on a visible axis.
+- `matrix`: 2-4 columns by 2-5 rows with visible grid relationships.
+
+The renderer must fail on unsupported layouts rather than silently falling back to a generic card grid.
+
+Premium layout rule: if `layout_type` starts with `premium-`, fill its premium-specific fields (`layers`, `user_tiers`, `mechanisms`, `loop_nodes`, `zones`, `stages`, `stream`, `checkpoints`, etc.) and set `layout_family: "premium"`. Do not try to satisfy premium layouts with generic `sections`; the validator should reject missing premium slots.
+
+#### Optional Path: Image Prompt Or Polish
+
+When the user explicitly wants AI image generation, or when the environment has a strong image model and the task tolerates raster text risk, follow [references/image-prompts.md](references/image-prompts.md).
+
+Prefer `deterministic-text` mode: generate a no-text or low-text visual base, then overlay exact text with the renderer. Use `image-text` mode only for short labels or exploratory drafts, and validate by visual inspection or OCR.
 
 ### 6. Validate And Deliver
 
 Before final delivery:
 
 - Run `scripts/validate_storyboard.py <storyboard.json>` when a storyboard JSON exists.
+- Run `scripts/qa_rendered_html.py` on kept HTML outputs when using the HTML renderer.
+- Run `scripts/qa_benchmark_image.py <benchmark.png> <candidate.png>` when the user provides a benchmark image. Treat it as a strict layout-density and edge-gap gate, not a replacement for visual review.
 - Compare every rendered text string against the storyboard text ledger.
 - Check that Chinese punctuation, English capitalization, acronyms, percentages, dates, names, and numbers are exact.
 - Confirm the card count matches the source logic and user brief.
 - Confirm visual patterns are varied and not only card grids.
+- Confirm connector lines are subtle, aligned to real blocks, and do not create oversized arrowheads or accidental wedges.
 - Confirm final images do not contain `PicTalk` unless explicitly requested by the user.
 - Export the final images plus the storyboard/source-notes file when useful.
 
@@ -131,4 +165,4 @@ For a complete PicTalk run, deliver:
 - notes on any source ambiguity or unsupported claims;
 - text validation status.
 
-If the user asks only for prompts, provide a storyboard and renderer-ready prompts, but still warn that final text should be overlaid deterministically.
+If the user asks only for prompts, provide a storyboard and renderer-ready prompts following [references/image-prompts.md](references/image-prompts.md), and state whether the prompt assumes `deterministic-text` or `image-text` mode.
