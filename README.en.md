@@ -7,45 +7,52 @@
 
 [中文 README](./README.md)
 
-PicTalk is an Agent Skill for turning articles, reports, meeting notes, and product documents into presentation-ready infographics.
+PicTalk is an Agent Skill for turning articles, reports, meeting notes, and product documents into infographics.
 
-When a document needs to be explained to other people, a clear image often works better than another long paragraph. PicTalk reads the source, extracts the structure, chooses a diagram pattern, and renders one or more visual cards that can be used in a deck, article, or team memo.
+It is built for a common presentation need: the document is already written, but the reader needs to see the structure first. PicTalk reads the source, extracts the argument and relationships, chooses a diagram pattern, and renders one or more visual cards for articles, decks, or team memos.
 
-## What it does
+## Quick Start
 
-- Extracts the main structure from articles, Markdown, meeting notes, PDF summaries, or pasted text.
-- Chooses diagram patterns such as hierarchy, flow, cycle, transformation, timeline, and matrix.
-- Generates Chinese or English infographics for reports, product explainers, article visuals, and presentations.
-- Renders final images with HTML/CSS templates, which keeps dense text, numbers, and headings stable.
-- Includes storyboard JSON, rendering scripts, and QA scripts so outputs can be regenerated and edited.
+### Codex
 
-## Examples
+PowerShell:
 
-### Hierarchy diffusion
+```powershell
+git clone https://github.com/nooqle/PicTalk.git
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills" | Out-Null
+Copy-Item -Recurse -Force ".\PicTalk\pictalk" "$env:USERPROFILE\.codex\skills\pictalk"
+```
 
-![Hierarchy diffusion](./docs/images/card-01.png)
-
-### Collaboration cycle
-
-![Collaboration cycle](./docs/images/card-02.png)
-
-### Transformation logic
-
-![Transformation logic](./docs/images/card-03.png)
-
-### User operation flow
-
-![User operation flow](./docs/images/meal-flow.png)
-
-Example assets live in `docs/images/`. Their storyboard sources are `docs/images/storyboard.json` and `docs/images/meal-flow-storyboard.json`.
-
-## Quick start
-
-### Claude Code
+bash:
 
 ```bash
 git clone https://github.com/nooqle/PicTalk.git
-cp -r PicTalk/pictalk ~/.claude/skills/pictalk
+mkdir -p ~/.codex/skills
+cp -R PicTalk/pictalk ~/.codex/skills/pictalk
+```
+
+Then ask:
+
+```text
+Use $pictalk to turn this article into presentation-ready infographics.
+```
+
+### Claude Code
+
+PowerShell:
+
+```powershell
+git clone https://github.com/nooqle/PicTalk.git
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force ".\PicTalk\pictalk" "$env:USERPROFILE\.claude\skills\pictalk"
+```
+
+bash:
+
+```bash
+git clone https://github.com/nooqle/PicTalk.git
+mkdir -p ~/.claude/skills
+cp -R PicTalk/pictalk ~/.claude/skills/pictalk
 ```
 
 Then ask:
@@ -54,31 +61,36 @@ Then ask:
 Use PicTalk to turn this article into 3 Chinese infographics for a presentation.
 ```
 
-### Codex
+## Examples
 
-Place `pictalk/` in your Codex skills directory and use:
+### Abstract Methodology To Cycle Diagram
 
-```text
-Use $pictalk to turn this article into presentation-ready infographics.
-```
+![Tacit knowledge collaboration cycle](./docs/images/hulunyu-02.png)
 
-### Run locally
+### Article To Reading Path
 
-The repo includes runnable example storyboards:
+![Buddhist Mother reading path](./docs/images/buddhist-mother-20260606-03.png)
 
-```bash
-python pictalk/scripts/validate_storyboard.py docs/images/storyboard.json
-python pictalk/scripts/render_storyboard.py docs/images/storyboard.json --output-dir docs/images
-```
+### Framework Article To Recognition Map
 
-Render the process-flow example:
+![Buddhist Mother recognition framework](./docs/images/buddhist-mother-20260606-02.png)
 
-```bash
-python pictalk/scripts/validate_storyboard.py docs/images/meal-flow-storyboard.json
-python pictalk/scripts/render_storyboard.py docs/images/meal-flow-storyboard.json --output-dir docs/images
-```
+More examples live in [docs/images](./docs/images). Example storyboards include:
 
-## Prompt examples
+- [article-examples-20260606-storyboard.json](./docs/images/article-examples-20260606-storyboard.json)
+- [storyboard.json](./docs/images/storyboard.json)
+- [buddhist-mother-storyboard.json](./docs/images/buddhist-mother-storyboard.json)
+- [meal-flow-storyboard.json](./docs/images/meal-flow-storyboard.json)
+
+## Best For
+
+- Blog posts, newsletter articles, and methodology essays
+- Product explainers, feature flows, and AI workflows
+- Meeting notes, research material, and project retrospectives
+- Report summaries, strategy documents, and training material
+- Infographics that need stable Chinese text, numbers, and domain terms
+
+## Prompt Examples
 
 ```text
 Turn this article into one infographic that explains the main argument.
@@ -98,28 +110,28 @@ Generate a vertical 3:4 Chinese infographic from this Markdown document.
 
 ## Workflow
 
-PicTalk follows a small workflow:
+PicTalk follows this workflow:
 
-1. Read the source and identify the topic, claims, phases, actors, relations, and conclusion.
+1. Read the source and identify the topic, claims, phases, actors, relationships, and conclusion.
 2. Decide how many images are needed.
-3. Pick a diagram pattern and create a storyboard.
+3. Pick a diagram pattern and create a storyboard JSON.
 4. Render PNG images from the HTML/CSS template.
-5. Run QA scripts for structure, size, and rendered text coverage.
+5. Run QA scripts for structure, size, text, and layout.
 
 For quick work, ask the Agent to run the full flow. For precise edits, modify the storyboard and render again.
 
 ## Layouts
 
-### Premium layouts
+### Premium Layouts
 
 | Layout | Best for |
 | --- | --- |
-| `premium-hierarchy-diffusion` | levels, maturity models, capability stacks, demand upgrades |
+| `premium-hierarchy-diffusion` | levels, maturity models, capability stacks, structural upgrades |
 | `premium-cycle-system` | feedback loops, operating flywheels, collaboration cycles |
 | `premium-transformation-logic` | old state to new state, problem to solution, signal to structure |
-| `premium-process-flow` | user journeys, product flows, AI pipelines, streaming output |
+| `premium-process-flow` | operation flows, product flows, AI pipelines, streaming output |
 
-### General layouts
+### General Layouts
 
 | Layout | Best for |
 | --- | --- |
@@ -130,15 +142,14 @@ For quick work, ask the Agent to run the full flow. For precise edits, modify th
 | `cycle` | loops and continuous improvement |
 | `comparison` / `transformation` | comparisons and solution explanations |
 
-## Design system
+## Design Principles
 
-PicTalk uses a restrained presentation style:
-
-- Vertical `1086x1448` canvas for article visuals and long cards.
-- Wide `1536x1024` canvas for process diagrams and slides.
-- Deep navy as the main color, with green, orange, and purple for semantic accents.
-- Consistent radius, borders, shadows, and spacing.
-- Icons, numbers, arrows, connectors, and conclusion bands show the structure before the reader studies every line.
+- Identify the content relationship before choosing a layout.
+- Each image should carry one primary structure, such as a hierarchy, flow, cycle, transformation, or matrix.
+- Visible text comes from the storyboard. Chinese text, numbers, dates, and domain terms use deterministic text rendering by default.
+- Each visual anchor uses one content-specific semantic icon. Geometric decoration can vary, but multiple icons should not be stacked inside one motif.
+- Colors carry meaning: blue for the main line, green for outputs or systems, orange for warnings or turns, purple for advanced layers or extensions.
+- Images are watermark-free by default, so they can be used directly in articles and presentations.
 
 Default colors:
 
@@ -153,14 +164,28 @@ Default colors:
 | border | `#BFD2F5` |
 | background | `#FFFFFF` |
 
-## Project structure
+## Local Rendering
+
+Python and Playwright are required:
+
+```bash
+pip install playwright
+playwright install chromium
+```
+
+Render an example:
+
+```bash
+python pictalk/scripts/validate_storyboard.py docs/images/storyboard.json
+python pictalk/scripts/render_storyboard.py docs/images/storyboard.json --output-dir docs/images --keep-html
+python pictalk/scripts/qa_rendered_html.py docs/images/card-01.html docs/images/card-02.html docs/images/card-03.html
+```
+
+## Project Structure
 
 ```text
 pictalk/
 ├── SKILL.md
-├── agents/
-│   ├── openai.yaml
-│   └── generic.yaml
 ├── assets/
 │   ├── storyboard-template.json
 │   └── template-infographic.html
@@ -179,30 +204,9 @@ pictalk/
     └── analyze_layout_alignment.py
 
 docs/
-├── images/
-│   ├── card-01.png
-│   ├── card-02.png
-│   ├── card-03.png
-│   ├── meal-flow.png
-│   ├── storyboard.json
-│   └── meal-flow-storyboard.json
-└── pictalk-premium-layout-design.md
-```
-
-## QA
-
-Common checks:
-
-```bash
-python pictalk/scripts/validate_storyboard.py docs/images/storyboard.json
-python pictalk/scripts/render_storyboard.py docs/images/storyboard.json --output-dir docs/images --keep-html
-python pictalk/scripts/qa_rendered_html.py docs/images/card-01.html docs/images/card-02.html docs/images/card-03.html
-```
-
-If you have a reference image, compare bounds, whitespace, and content coverage:
-
-```bash
-python pictalk/scripts/qa_benchmark_image.py benchmark.png docs/images/card-01.png
+└── images/
+    ├── *.png
+    └── *storyboard.json
 ```
 
 ## License

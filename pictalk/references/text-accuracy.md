@@ -13,7 +13,7 @@ Every visible text string must originate from the storyboard `text_ledger`. The 
 When using `scripts/render_storyboard.py` or another deterministic renderer:
 
 - Text is rendered from storyboard fields that are also listed in `text_ledger`.
-- Premium layouts also render their built-in semantic labels, such as `典型行为`, `核心卡点`, `匹配人群`, default row titles such as `扩散机制` / `结构判断`, and numeric badges. Include these strings in `text_ledger` unless you override them through explicit fields.
+- Premium layouts also render their built-in semantic labels, such as `表现线索`, `关键阻碍`, `适配场景`, default row titles such as `扩散机制` / `结构判断`, and numeric badges. Include these strings in `text_ledger` unless you override them through explicit fields such as `field_labels`.
 - After rendering, inspect for cropped characters, CSS overflow, font loading failures, line break issues, and low contrast.
 - HTML/SVG/PPTX rendering should not produce pseudo-text, but layout issues can hide or overlap content.
 

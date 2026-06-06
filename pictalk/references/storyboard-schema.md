@@ -124,7 +124,7 @@ For reference-grade or "one image explains it" outputs, choose a premium layout 
 
 ### `premium-hierarchy-diffusion`
 
-Use for a 4-level hierarchy with related audience/user tiers and diffusion mechanisms.
+Use for a 4-level hierarchy with related tiers and diffusion mechanisms.
 
 - `layout_family`: `premium`
 - `quality_target`: `presentation` or `reference-grade`
@@ -132,7 +132,9 @@ Use for a 4-level hierarchy with related audience/user tiers and diffusion mecha
 - `canvas`: `{ "width": 1086, "height": 1448 }` unless `allow_custom_canvas` is true
 - `axis`: `{ "label": "...", "direction": "up" }`
 - `layers`: exactly 4 objects; each requires `no`, `title`, `type`, `icon`, `tone`, `typical_behavior`, `core_blocker`, `matched_audience`, `essence`
-- `user_tiers`: exactly 3 objects; each requires `id`, `label`, `headline`, `body`, `tone`
+- `tiers`: exactly 3 objects; each requires `id`, `label`, `headline`, `body`, `tone`; `reference-grade` cards also require `icon`
+- `visual_style`: optional motif style for `layers` and `tiers`; one of `single`, `stack`, `constellation`, `shield`, `bridge`, `pyramid`; it changes geometric decoration only
+- `motif_icons`: optional list of 1-3 primary-icon candidates. The final rendered motif uses exactly one semantic SVG icon; never compose a motif by overlapping multiple icons.
 - `tier_callout`: optional object with `text`, `icon`, and `tone`; use it for the right-side emphasis box in benchmark-like hierarchy images
 - `connectors`: at least 3 objects; each references a layer with `from_layer` and a tier with `to_tier`
 - `mechanisms`: exactly 3 objects; each requires `no`, `title`, `body`, `tone`; optional `icon`
@@ -147,7 +149,7 @@ Use for a central mechanism with a loop and explicit outputs.
 - `quality_target`: `presentation` or `reference-grade`
 - `center`: `{ "main": "...", "lines": ["..."] }`
 - `top_flow`: 3-5 items
-- optional `cycle_phases`: 3-5 phase labels rendered around the center; defaults to `top_flow` when omitted
+- `top_flow`: 3-5 compact labels for the strip above the loop; keep the cycle center clean
 - `loop_nodes`: 5-6 nodes; each requires `no`, `title`, `subtitle`, `icon`, `tone`
 - `outputs`: 3-5 cards; each requires `title`, `body`, `icon`, `tone`
 - `outputs_title`
@@ -168,7 +170,7 @@ Use for old state -> mechanism -> new state.
 
 ### `premium-process-flow`
 
-Use for a four-step user journey, product operation flow, AI pipeline, or "input -> process -> stream output" workflow.
+Use for a four-step operation flow, product workflow, AI pipeline, or "input -> process -> stream output" workflow.
 
 - `layout_family`: `premium`
 - `quality_target`: `presentation` or `reference-grade`
@@ -194,7 +196,7 @@ Best for:
 ### `layer-stack`
 
 - `sections`: 3-5 stacked layers.
-- Optional `side_sections`: 2-3 user tiers or audience levels.
+- Optional `side_sections`: 2-3 related tiers, roles, or audience levels.
 - Optional `metrics`: bottom diffusion mechanisms or outputs.
 
 ### `transformation` / `comparison`

@@ -22,9 +22,9 @@ Observed gaps:
 
 - `sections.heading + body + footer` is too coarse for rich layered diagrams.
 - Layouts are generic (`cycle`, `layer-stack`, `transformation`) instead of reference-grade compositions.
-- The renderer has too few semantic slots: it cannot distinguish behavior, blocker, user tier, essence, evidence, mechanism, and conclusion.
+- The renderer has too few semantic slots: it cannot distinguish signal, blocker, related tier, essence, evidence, mechanism, and conclusion.
 - The validator checks structure and ledger coverage, but not layout-specific quality rules such as density, required connectors, emphasis pills, module counts, and bottom mechanism rows.
-- The template has a house style, but not enough local components: essence pills, left gradient rails, user-tier pyramids, cross-links, curved arrows, output mechanism chains, dense section metadata.
+- The template has a house style, but not enough local components: essence pills, left gradient rails, content-specific visual motifs, cross-links, curved arrows, output mechanism chains, dense section metadata.
 
 Guizang works better because it uses:
 
@@ -45,6 +45,7 @@ PicTalk should adopt the same low-freedom philosophy, but for single-image expla
 4. **Source-grounded compression.** The agent may compress source language, but every visible string must enter `text_ledger`.
 5. **Visual constraints are part of the contract.** Layout ratio, module count, connector count, and density are validated.
 6. **Reference matching beats creative freedom.** When user asks for "one image explains it," default to a premium layout.
+7. **Low-freedom structure, high-freedom local motifs.** Layout geometry should be stable; icons, motif combinations, and local graphics should be chosen from the article semantics so outputs do not all look identical.
 
 ## Premium Layouts
 
@@ -55,8 +56,8 @@ Use for one core mechanism with surrounding operating loop.
 Reference shape:
 
 - top logic strip;
-- central circular thesis with inner phase chips;
-- 5-6 surrounding nodes attached to a double-ring path;
+- clean central circular thesis;
+- 5-6 surrounding nodes attached to segmented circular arrows;
 - directional curved arrows with feedback semantics;
 - output row;
 - saturated conclusion band.
@@ -72,12 +73,6 @@ Required schema:
   },
   "top_flow": [
     { "label": "图谱定义业务世界", "icon": "network" }
-  ],
-  "cycle_phases": [
-    { "label": "命名", "icon": "target", "tone": "blue" },
-    { "label": "验证", "icon": "check", "tone": "green" },
-    { "label": "压缩", "icon": "refresh", "tone": "purple" },
-    { "label": "写回", "icon": "clipboard", "tone": "orange" }
   ],
   "loop_nodes": [
     {
@@ -100,21 +95,21 @@ Validation:
 - `loop_nodes` count must be 5-6.
 - Each node must have `no`, `title`, `subtitle`, `icon`, and `tone`.
 - `top_flow` count must be 3-5.
-- `cycle_phases`, when provided, must be 3-5 labels and should name the path mechanics.
+- The center should stay clean; path mechanics belong in `top_flow`, `loop_nodes`, and the visible arrow order.
 - `outputs` count must be 3-5.
 - `center.main` must be <= 16 Chinese characters or split into `lines`.
 
 ### PTP02 `premium-hierarchy-diffusion`
 
-Use for layered needs, maturity ladders, high-to-low diffusion, audience tiers, or capability levels.
+Use for layered arguments, maturity ladders, structural diffusion, related tiers, or capability levels.
 
 Reference shape:
 
 - large title and subtitle;
 - left upward gradient arrow;
 - middle 4 stacked layer modules;
-- each layer has icon block, title, type, behavior, blocker, audience, essence pill;
-- right user/audience hierarchy with a compact callout, emphasized top tier, and connected arrows;
+- each layer has icon block, title, type, signal, constraint, context, essence pill;
+- right related-tier hierarchy with a compact callout, emphasized top tier, and connected arrows;
 - bottom "three diffusion mechanisms" row;
 - final conclusion band.
 
@@ -124,32 +119,32 @@ Required schema:
 {
   "layout_type": "premium-hierarchy-diffusion",
   "axis": {
-    "label": "需求层次逐级升级",
+    "label": "结构层级逐级升级",
     "direction": "up"
   },
   "layers": [
     {
       "no": "4",
-      "title": "社群运营",
-      "type": "跨场景整合型",
+      "title": "系统能力",
+      "type": "跨场景整合层",
       "icon": "network",
       "tone": "blue",
-      "typical_behavior": "招新→内容→互动→转化的完整方案需求",
-      "core_blocker": "想建群，但不会从0到1运营",
-      "matched_audience": "高职级 / 双料主理人 / 团队带头人",
-      "essence": "最具商业价值的系统能力"
+      "typical_behavior": "多个场景开始复用同一套方法",
+      "core_blocker": "经验分散，缺少可迁移结构",
+      "matched_audience": "复杂项目 / 跨团队协作 / 方法沉淀",
+      "essence": "可复用系统能力"
     }
   ],
-  "user_tiers": [
+  "tiers": [
     {
-      "label": "C 带动层",
-      "headline": "会提问的人，决定了高质量链路的上限",
-      "body": ["高职级", "双料主理人", "社群带头人"],
+      "label": "C 复用层",
+      "headline": "稳定结构决定后续协作的复用上限",
+      "body": ["跨场景复用", "标准化表达", "持续写回"],
       "tone": "green"
     }
   ],
   "tier_callout": {
-    "text": "会提问的人，决定高质量链路的上限",
+    "text": "稳定结构决定协作复用的上限",
     "icon": "trophy",
     "tone": "orange"
   },
@@ -159,14 +154,14 @@ Required schema:
   "mechanisms": [
     {
       "no": "1",
-      "title": "内容高带低",
-      "body": "高质量问题→更完整答案→低层级用户也能直接拿来用",
+      "title": "结构带动执行",
+      "body": "清晰结构→更稳定行动→协作者更容易复用",
       "icon": "clipboard",
       "tone": "blue"
     }
   ],
   "summary_cards": [
-    { "title": "高阶需求天然覆盖低阶需求", "body": "优先优化高阶链路...", "icon": "trophy", "tone": "blue" }
+    { "title": "高阶结构可以带动低阶执行", "body": "优先打磨可复用结构...", "icon": "trophy", "tone": "blue" }
   ],
   "conclusion": "核心结论：..."
 }
@@ -175,7 +170,7 @@ Required schema:
 Validation:
 
 - `layers` count must be exactly 4 for this layout.
-- `user_tiers` count must be exactly 3.
+- `tiers` count must be exactly 3.
 - `mechanisms` count must be exactly 3.
 - `connectors` must cover at least 3 layer-to-tier relations.
 - Each layer must have `typical_behavior`, `core_blocker`, `matched_audience`, and `essence`.
@@ -236,7 +231,7 @@ Validation:
 
 ### PTP04 `premium-process-flow`
 
-Use for product operation flows, user journeys, AI pipelines, and any four-step process where progressive output must be visible.
+Use for product operation flows, AI pipelines, and any four-step process where progressive output must be visible.
 
 Reference shape:
 
@@ -319,7 +314,7 @@ Add CSS components:
 - `.essence-pill`
 - `.layer-rail`
 - `.layer-module`
-- `.user-tier-pyramid`
+- `.visual-motif`
 - `.connector-svg`
 - `.mechanism-chain`
 - `.summary-card-row`
@@ -353,7 +348,7 @@ Visual QA checks:
 - benchmark comparison checks edge gaps, bottom gap, and content coverage when a reference image is provided;
 - conclusion band is present and above bottom margin;
 - connector SVG exists for layouts that require connectors.
-- premium cycle requires loop nodes, inner phase chips, arc paths, and output cards;
+- premium cycle requires loop nodes, segmented arc paths, a clean center, and output cards;
 - premium transformation requires exactly three zones, one insight per zone, and a conversion artifact band.
 - premium process flow requires four stages, three arrows, a stream band, and checkpoint cards.
 
@@ -400,7 +395,7 @@ Tasks:
 
 Acceptance:
 
-- left arrow, four layers, three user tiers, three mechanisms, summary cards, and conclusion band all render;
+- left arrow, four layers, three related tiers, three mechanisms, summary cards, and conclusion band all render;
 - right tier callout, emphasized top tier, icon-led mechanisms, and summary icons render;
 - layer cards are dense but readable;
 - no large empty middle areas;
@@ -416,14 +411,14 @@ Tasks:
 - add top strip icon sizing rules;
 - add output cards with icon wells;
 - tune center circle and arrow geometry;
-- add inner phase chips and double-ring path;
+- tune clean center, segmented arrows, and node spacing;
 - add visual QA for loop maturity.
 
 Acceptance:
 
 - no node overlap;
 - cycle arrows feel intentional;
-- phase chips make the path mechanics explicit;
+- the center stays clean while arrows and node order make the path mechanics explicit;
 - visual weight is close to the GPT reference.
 
 ### Phase 3: Premium Transformation
@@ -464,7 +459,7 @@ Acceptance:
 - four stage cards align without text overflow;
 - arrows are subtle and connected to real adjacent stages;
 - stream output band is visually separate from the stage spine;
-- checkpoints explain trust and user visibility rather than adding noisy extra steps;
+- checkpoints explain trust and output visibility rather than adding noisy extra steps;
 - final image reads as a workflow, not a generic card grid.
 
 ## Quality Bar

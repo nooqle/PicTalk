@@ -1,0 +1,954 @@
+{
+  "project": {
+    "title": "文章配图示例：囫囵语与佛母",
+    "source_language": "zh-CN",
+    "output_language": "zh-CN",
+    "audience": "文章配图、公众号封面延展与演讲汇报",
+    "aspect_ratio": "mixed",
+    "card_count_rationale": "囫囵语文章需要用层级图和循环图解释共同语言的生成；佛母文章需要用层级图、转化图和流程图解释概念、识别框架与阅读路径。",
+    "allow_visible_pictalk_brand": false
+  },
+  "palette": {
+    "title_navy": "#071B49",
+    "primary_blue": "#0757D8",
+    "green": "#128348",
+    "orange": "#E77800",
+    "purple": "#5A2BAE",
+    "background": "#FFFFFF"
+  },
+  "source_notes": [
+    {
+      "id": "H1",
+      "quote_or_summary": "人和 Agent 的协同首先是边界上的协同，要持续区分语言、命名、验证和完成。",
+      "location": "囫囵语文章第 2 段"
+    },
+    {
+      "id": "H2",
+      "quote_or_summary": "囫囵语是被压缩过的整体，短信号背后携带厚结构。",
+      "location": "囫囵语文章第 3 段"
+    },
+    {
+      "id": "H3",
+      "quote_or_summary": "默会知识可以逐步转译为可言说、可共享、可验证、可写回的公共结构。",
+      "location": "囫囵语文章第 5 段"
+    },
+    {
+      "id": "B1",
+      "quote_or_summary": "佛母不是血缘意义的母亲，而是智慧生出觉悟的哲学关系。",
+      "location": "佛母文章开篇"
+    },
+    {
+      "id": "B2",
+      "quote_or_summary": "般若佛母是《般若经》的显相，代表空性本身，也连接文本与图像。",
+      "location": "般若佛母段落"
+    },
+    {
+      "id": "B3",
+      "quote_or_summary": "一髻佛母以一髻、一目、一齿、一乳等特征表现智慧的锋利和护法力量。",
+      "location": "一髻佛母段落"
+    },
+    {
+      "id": "B4",
+      "quote_or_summary": "尊胜佛母由经典、陀罗尼、延寿与净障共同撑起修法系统。",
+      "location": "尊胜佛母段落"
+    },
+    {
+      "id": "B5",
+      "quote_or_summary": "大白伞盖佛母以白伞、千头千手或三面六臂等形象展开防护和广覆。",
+      "location": "大白伞盖佛母段落"
+    }
+  ],
+  "cards": [
+    {
+      "id": "hulunyu-01",
+      "title": "共同语言如何长出来",
+      "subtitle": "从边界感到囫囵语的四层转译",
+      "layout_type": "premium-hierarchy-diffusion",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "dense",
+      "primary_pattern": "hierarchy-diffusion",
+      "supporting_patterns": ["layer-map", "semantic-tier", "mechanism-chain", "conclusion-band"],
+      "thesis": "共同语言会在感受、命名、验证、写回的层级升级中逐步形成。",
+      "composition": {
+        "dominant_structure": "左侧上升轴承接四层转译，中间层级卡解释协同状态，右侧三层结构说明语言成熟度，底部机制链和判断卡收束。",
+        "not_card_grid": true,
+        "visible_marks": ["上升轴", "四层转译", "右侧层级", "跨区连接", "机制链", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "axis": {
+        "label": "协同语言逐级升级",
+        "direction": "up"
+      },
+      "field_labels": {
+        "typical_behavior": "触发信号",
+        "core_blocker": "协同风险",
+        "matched_audience": "可复用对象"
+      },
+      "essence_label": "结构本质",
+      "tiers_title": "协同层级",
+      "layers": [
+        {
+          "id": "signal",
+          "no": "1",
+          "title": "感受信号",
+          "type": "默会起点层",
+          "icon": "spark",
+          "visual_style": "constellation",
+          "motif_icons": ["spark", "target", "check"],
+          "tone": "orange",
+          "typical_behavior": "觉得不对、状态不干净、这里有漂移",
+          "core_blocker": "只停留在人的经验里，难以共享",
+          "matched_audience": "即时纠偏和状态提醒",
+          "essence": "边界感",
+          "source_ids": ["H3"]
+        },
+        {
+          "id": "boundary",
+          "no": "2",
+          "title": "命名边界",
+          "type": "语言校准层",
+          "icon": "target",
+          "visual_style": "bridge",
+          "motif_icons": ["edit", "target"],
+          "tone": "blue",
+          "typical_behavior": "拆开语言、工具、操作和完成",
+          "core_blocker": "说清、理解、完成容易被压成一团",
+          "matched_audience": "人和 Agent 的共同校准",
+          "essence": "边界成形",
+          "source_ids": ["H1"]
+        },
+        {
+          "id": "writeback",
+          "no": "3",
+          "title": "验证写回",
+          "type": "公共结构层",
+          "icon": "clipboard",
+          "visual_style": "stack",
+          "motif_icons": ["clipboard", "check", "layers"],
+          "tone": "green",
+          "typical_behavior": "保存失败样本，区分验证层级",
+          "core_blocker": "没有写回就无法进入下一轮协同",
+          "matched_audience": "可复盘的执行规则",
+          "essence": "经验可证",
+          "source_ids": ["H3"]
+        },
+        {
+          "id": "holophrase",
+          "no": "4",
+          "title": "囫囵语调用",
+          "type": "压缩调用层",
+          "icon": "network",
+          "visual_style": "constellation",
+          "motif_icons": ["network", "refresh", "trophy"],
+          "tone": "purple",
+          "typical_behavior": "一个词唤起边界、节奏、验证和收尾",
+          "core_blocker": "压缩后仍要保持双方还原一致",
+          "matched_audience": "成熟的人机协同默契",
+          "essence": "共同语言",
+          "source_ids": ["H2"]
+        }
+      ],
+      "tiers": [
+        {
+          "id": "A",
+          "label": "A 感受层",
+          "headline": "人的边界感先发现漂移",
+          "body": ["即时感受", "经验判断", "临场纠偏"],
+          "icon": "spark",
+          "visual_style": "constellation",
+          "motif_icons": ["spark", "users"],
+          "tone": "orange"
+        },
+        {
+          "id": "B",
+          "label": "B 结构层",
+          "headline": "双方开始用同一套边界检查行动",
+          "body": ["命名边界", "验证层级", "失败样本"],
+          "icon": "target",
+          "visual_style": "bridge",
+          "motif_icons": ["users", "target"],
+          "tone": "blue"
+        },
+        {
+          "id": "C",
+          "label": "C 调用层",
+          "headline": "短信号可以召回完整协同方法",
+          "body": ["协同执行卡", "哒哒哒", "共同收尾"],
+          "icon": "network",
+          "visual_style": "constellation",
+          "motif_icons": ["network", "refresh", "trophy"],
+          "tone": "green"
+        }
+      ],
+      "tier_callout": {
+        "text": "短信号背后携带厚结构",
+        "icon": "trophy",
+        "tone": "orange"
+      },
+      "connectors": [
+        { "from_layer": "1", "to_tier": "A", "tone": "orange", "kind": "curved-arrow" },
+        { "from_layer": "2", "to_tier": "B", "tone": "blue", "kind": "curved-arrow" },
+        { "from_layer": "3", "to_tier": "B", "tone": "green", "kind": "curved-arrow" },
+        { "from_layer": "4", "to_tier": "C", "tone": "purple", "kind": "curved-arrow" }
+      ],
+      "mechanisms_title": "三步转译机制",
+      "mechanisms": [
+        {
+          "no": "1",
+          "title": "感受提纯",
+          "body": "把模糊的不对劲提炼成可讨论信号",
+          "icon": "spark",
+          "tone": "orange"
+        },
+        {
+          "no": "2",
+          "title": "边界命名",
+          "body": "把语言、行动、验证和完成拆开",
+          "icon": "target",
+          "tone": "blue"
+        },
+        {
+          "no": "3",
+          "title": "验证写回",
+          "body": "把错误样本变成下一轮协同约束",
+          "icon": "clipboard",
+          "tone": "green"
+        }
+      ],
+      "summary_title": "结构判断",
+      "summary_cards": [
+        {
+          "title": "囫囵语压缩上下文",
+          "body": "短词可以召回边界、角色、验证方式和收尾节奏。",
+          "icon": "network",
+          "tone": "blue"
+        },
+        {
+          "title": "默会知识进入协同",
+          "body": "关键经验被转译后，会成为双方共享的公共结构。",
+          "icon": "layers",
+          "tone": "green"
+        }
+      ],
+      "conclusion": "核心结论：共同语言是在边界校准、失败写回和重复调用中逐步长出来的。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "target",
+      "text_ledger": [
+        "共同语言如何长出来",
+        "从边界感到囫囵语的四层转译",
+        "协同语言逐级升级",
+        "协同层级",
+        "触发信号",
+        "协同风险",
+        "可复用对象",
+        "结构本质",
+        "1",
+        "感受信号",
+        "默会起点层",
+        "觉得不对、状态不干净、这里有漂移",
+        "只停留在人的经验里，难以共享",
+        "即时纠偏和状态提醒",
+        "边界感",
+        "2",
+        "命名边界",
+        "语言校准层",
+        "拆开语言、工具、操作和完成",
+        "说清、理解、完成容易被压成一团",
+        "人和 Agent 的共同校准",
+        "边界成形",
+        "3",
+        "验证写回",
+        "公共结构层",
+        "保存失败样本，区分验证层级",
+        "没有写回就无法进入下一轮协同",
+        "可复盘的执行规则",
+        "经验可证",
+        "4",
+        "囫囵语调用",
+        "压缩调用层",
+        "一个词唤起边界、节奏、验证和收尾",
+        "压缩后仍要保持双方还原一致",
+        "成熟的人机协同默契",
+        "共同语言",
+        "A 感受层",
+        "人的边界感先发现漂移",
+        "即时感受",
+        "经验判断",
+        "临场纠偏",
+        "B 结构层",
+        "双方开始用同一套边界检查行动",
+        "命名边界",
+        "验证层级",
+        "失败样本",
+        "C 调用层",
+        "短信号可以召回完整协同方法",
+        "协同执行卡",
+        "哒哒哒",
+        "共同收尾",
+        "短信号背后携带厚结构",
+        "三步转译机制",
+        "感受提纯",
+        "把模糊的不对劲提炼成可讨论信号",
+        "边界命名",
+        "把语言、行动、验证和完成拆开",
+        "验证写回",
+        "把错误样本变成下一轮协同约束",
+        "结构判断",
+        "囫囵语压缩上下文",
+        "短词可以召回边界、角色、验证方式和收尾节奏。",
+        "默会知识进入协同",
+        "关键经验被转译后，会成为双方共享的公共结构。",
+        "核心结论：共同语言是在边界校准、失败写回和重复调用中逐步长出来的。"
+      ]
+    },
+    {
+      "id": "hulunyu-02",
+      "title": "默会知识怎样变成协同资产",
+      "subtitle": "从人的边界感到 Agent 可复用约束",
+      "layout_type": "premium-cycle-system",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "cycle-system",
+      "supporting_patterns": ["top-flow", "radial-loop", "output-row", "conclusion-band"],
+      "thesis": "默会知识会在协同中被提取、命名、验证、写回，并变成下一轮可调用的方法。",
+      "composition": {
+        "dominant_structure": "顶部流程条给出压缩路径，中心圆形命题保持干净，六个节点沿圆形箭头构成转译循环，底部输出协同资产。",
+        "not_card_grid": true,
+        "visible_marks": ["顶部流程", "中心圆", "环形箭头", "六个节点", "输出行", "结论卡"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "top_flow": [
+        { "label": "感到漂移", "icon": "spark" },
+        { "label": "边界命名", "icon": "target" },
+        { "label": "验证行动", "icon": "check" },
+        { "label": "写回规则", "icon": "clipboard" },
+        { "label": "压缩调用", "icon": "refresh" }
+      ],
+      "center": {
+        "main": "可复用协同资产",
+        "lines": ["边界词汇", "失败样本", "协同节奏", "囫囵语"]
+      },
+      "loop_nodes": [
+        {
+          "no": "1",
+          "title": "感到漂移",
+          "subtitle": "边界感先于语言出现",
+          "icon": "spark",
+          "tone": "orange"
+        },
+        {
+          "no": "2",
+          "title": "命名边界",
+          "subtitle": "把漂移变成可检查对象",
+          "icon": "target",
+          "tone": "blue"
+        },
+        {
+          "no": "3",
+          "title": "验证行动",
+          "subtitle": "确认命名是否改变行动",
+          "icon": "check",
+          "tone": "green"
+        },
+        {
+          "no": "4",
+          "title": "写回规则",
+          "subtitle": "把失败样本变成约束",
+          "icon": "clipboard",
+          "tone": "purple"
+        },
+        {
+          "no": "5",
+          "title": "压缩调用",
+          "subtitle": "让短信号召回完整方法",
+          "icon": "refresh",
+          "tone": "orange"
+        }
+      ],
+      "outputs_title": "循环产出",
+      "outputs": [
+        {
+          "title": "边界词汇",
+          "body": "语言、行动、验证、完成各有边界",
+          "icon": "book-open",
+          "tone": "blue"
+        },
+        {
+          "title": "失败样本",
+          "body": "把漂移记录为可复盘证据",
+          "icon": "clipboard",
+          "tone": "orange"
+        },
+        {
+          "title": "协同节奏",
+          "body": "校准、执行、检查、收尾",
+          "icon": "refresh",
+          "tone": "green"
+        },
+        {
+          "title": "囫囵语",
+          "body": "短词召回厚结构",
+          "icon": "network",
+          "tone": "purple"
+        }
+      ],
+      "conclusion": "核心结论：可复用协同来自默会知识的提取、命名、验证和写回。",
+      "conclusion_style": "green",
+      "conclusion_icon": "network",
+      "text_ledger": [
+        "默会知识怎样变成协同资产",
+        "从人的边界感到 Agent 可复用约束",
+        "感到漂移",
+        "验证行动",
+        "写回规则",
+        "可复用协同资产",
+        "囫囵语调用",
+        "命名边界",
+        "把漂移变成可检查对象",
+        "把失败样本变成约束",
+        "感受出现",
+        "边界命名",
+        "验证写回",
+        "压缩调用",
+        "感知经验 → 公共结构",
+        "默会知识的转译循环",
+        "协同语言的生长机制",
+        "1",
+        "感到不对",
+        "边界感先于语言出现",
+        "2",
+        "说清问题",
+        "把漂移变成可讨论对象",
+        "3",
+        "拆分边界",
+        "区分语言、工具、操作和完成",
+        "4",
+        "验证状态",
+        "确认命名是否改变行动",
+        "5",
+        "写回约束",
+        "把失败样本变成规则",
+        "6",
+        "压缩调用",
+        "让短信号召回完整方法",
+        "循环产出",
+        "边界词汇",
+        "语言、行动、验证、完成各有边界",
+        "失败样本",
+        "把漂移记录为可复盘证据",
+        "协同节奏",
+        "校准、执行、检查、收尾",
+        "囫囵语",
+        "短词召回厚结构",
+        "核心结论：可复用协同来自默会知识的提取、命名、验证和写回。"
+      ]
+    },
+    {
+      "id": "buddhist-mother-20260606-01",
+      "title": "佛母如何从概念长成图像",
+      "subtitle": "智慧、空性、神咒与护持的四条艺术线索",
+      "layout_type": "premium-hierarchy-diffusion",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "dense",
+      "primary_pattern": "hierarchy-diffusion",
+      "supporting_patterns": ["layer-map", "image-recognition", "mechanism-chain", "conclusion-band"],
+      "thesis": "佛母题材把抽象的智慧、神咒和护持关系，转化成可观看、可塑造、可识别的女性本尊图像。",
+      "composition": {
+        "dominant_structure": "左侧上升轴连接四类佛母，中间层级卡说明图像线索，右侧阅读层级把概念、图像、脉络连成一套识别路径。",
+        "not_card_grid": true,
+        "visible_marks": ["上升轴", "四类佛母", "阅读层级", "连接线", "机制链", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "axis": {
+        "label": "从智慧根源到护持空间",
+        "direction": "up"
+      },
+      "field_labels": {
+        "typical_behavior": "图像线索",
+        "core_blocker": "识别难点",
+        "matched_audience": "阅读入口"
+      },
+      "essence_label": "图像本质",
+      "tiers_title": "阅读层级",
+      "layers": [
+        {
+          "id": "prajna",
+          "no": "1",
+          "title": "般若佛母",
+          "type": "根本智慧层",
+          "icon": "book-open",
+          "visual_style": "single",
+          "motif_icons": ["book-open"],
+          "tone": "blue",
+          "typical_behavior": "空性、经文与女性本尊合为中心形象",
+          "core_blocker": "容易把称号理解成血缘关系",
+          "matched_audience": "先读般若和空性",
+          "essence": "智慧根源",
+          "source_ids": ["B1", "B2"]
+        },
+        {
+          "id": "ekajati",
+          "no": "2",
+          "title": "一髻佛母",
+          "type": "忿怒护法层",
+          "icon": "flame",
+          "visual_style": "shield",
+          "motif_icons": ["flame"],
+          "tone": "orange",
+          "typical_behavior": "一髻、一目、一齿、一乳形成强辨识点",
+          "core_blocker": "怪异身相容易脱离智慧主线",
+          "matched_audience": "再读护法和忿怒相",
+          "essence": "锋利能量",
+          "source_ids": ["B3"]
+        },
+        {
+          "id": "usnisa",
+          "no": "3",
+          "title": "尊胜佛母",
+          "type": "陀罗尼修法层",
+          "icon": "vase",
+          "visual_style": "stack",
+          "motif_icons": ["vase"],
+          "tone": "green",
+          "typical_behavior": "白身三面八臂，法器、宝瓶和功德层层叠加",
+          "core_blocker": "法器众多，关系容易散开",
+          "matched_audience": "对照经典仪轨阅读",
+          "essence": "寿命净障",
+          "source_ids": ["B4"]
+        },
+        {
+          "id": "sitatapatra",
+          "no": "4",
+          "title": "大白伞盖佛母",
+          "type": "防护坛场层",
+          "icon": "umbrella",
+          "visual_style": "shield",
+          "motif_icons": ["umbrella"],
+          "tone": "purple",
+          "typical_behavior": "白伞、千头千手或三面六臂展开护持场",
+          "core_blocker": "多种化身和观想层级容易混淆",
+          "matched_audience": "比较经咒、唐卡和造像",
+          "essence": "护持空间",
+          "source_ids": ["B5"]
+        }
+      ],
+      "tiers": [
+        {
+          "id": "A",
+          "label": "A 概念层",
+          "headline": "从般若和空性理解佛母来源",
+          "body": ["智慧生出觉悟", "经文显相", "哲学关系"],
+          "icon": "wheel",
+          "visual_style": "constellation",
+          "motif_icons": ["wheel"],
+          "tone": "blue"
+        },
+        {
+          "id": "B",
+          "label": "B 图像层",
+          "headline": "用身相、手印、法器识别本尊类型",
+          "body": ["身色", "面臂数量", "持物法器"],
+          "icon": "eye",
+          "visual_style": "single",
+          "motif_icons": ["eye"],
+          "tone": "green"
+        },
+        {
+          "id": "C",
+          "label": "C 脉络层",
+          "headline": "把根、枝、护法和防护场连成谱系",
+          "body": ["般若为根", "一髻成力", "尊胜与白伞展开系统"],
+          "icon": "network",
+          "visual_style": "constellation",
+          "motif_icons": ["network"],
+          "tone": "orange"
+        }
+      ],
+      "tier_callout": {
+        "text": "抽象力量借女性身体变成可观看图像",
+        "icon": "trophy",
+        "tone": "orange"
+      },
+      "connectors": [
+        { "from_layer": "1", "to_tier": "A", "tone": "blue", "kind": "curved-arrow" },
+        { "from_layer": "2", "to_tier": "B", "tone": "orange", "kind": "curved-arrow" },
+        { "from_layer": "3", "to_tier": "C", "tone": "green", "kind": "curved-arrow" },
+        { "from_layer": "4", "to_tier": "C", "tone": "purple", "kind": "curved-arrow" }
+      ],
+      "mechanisms_title": "三条阅读线索",
+      "mechanisms": [
+        {
+          "no": "1",
+          "title": "看概念",
+          "body": "先分清般若、空性与觉悟的关系",
+          "icon": "book-open",
+          "tone": "blue"
+        },
+        {
+          "no": "2",
+          "title": "看形象",
+          "body": "再看身色、面臂、手印和持物",
+          "icon": "eye",
+          "tone": "green"
+        },
+        {
+          "no": "3",
+          "title": "看系统",
+          "body": "最后连接经典、陀罗尼和崇拜传统",
+          "icon": "scroll",
+          "tone": "purple"
+        }
+      ],
+      "summary_title": "图像判断",
+      "summary_cards": [
+        {
+          "title": "佛母是一套视觉化方法",
+          "body": "智慧、空性、神咒和护持被组织成可观看的图像。",
+          "icon": "network",
+          "tone": "blue"
+        },
+        {
+          "title": "女性本尊承载抽象力量",
+          "body": "身体、面容和法器让哲学关系进入艺术史线索。",
+          "icon": "spark",
+          "tone": "green"
+        }
+      ],
+      "conclusion": "核心结论：佛母艺术把智慧根源、护法能量、修法系统和防护空间连成一条可见脉络。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "network",
+      "text_ledger": [
+        "佛母如何从概念长成图像",
+        "智慧、空性、神咒与护持的四条艺术线索",
+        "从智慧根源到护持空间",
+        "阅读层级",
+        "图像线索",
+        "识别难点",
+        "阅读入口",
+        "图像本质",
+        "1",
+        "般若佛母",
+        "根本智慧层",
+        "空性、经文与女性本尊合为中心形象",
+        "容易把称号理解成血缘关系",
+        "先读般若和空性",
+        "智慧根源",
+        "2",
+        "一髻佛母",
+        "忿怒护法层",
+        "一髻、一目、一齿、一乳形成强辨识点",
+        "怪异身相容易脱离智慧主线",
+        "再读护法和忿怒相",
+        "锋利能量",
+        "3",
+        "尊胜佛母",
+        "陀罗尼修法层",
+        "白身三面八臂，法器、宝瓶和功德层层叠加",
+        "法器众多，关系容易散开",
+        "对照经典仪轨阅读",
+        "寿命净障",
+        "4",
+        "大白伞盖佛母",
+        "防护坛场层",
+        "白伞、千头千手或三面六臂展开护持场",
+        "多种化身和观想层级容易混淆",
+        "比较经咒、唐卡和造像",
+        "护持空间",
+        "A 概念层",
+        "从般若和空性理解佛母来源",
+        "智慧生出觉悟",
+        "经文显相",
+        "哲学关系",
+        "B 图像层",
+        "用身相、手印、法器识别本尊类型",
+        "身色",
+        "面臂数量",
+        "持物法器",
+        "C 脉络层",
+        "把根、枝、护法和防护场连成谱系",
+        "般若为根",
+        "一髻成力",
+        "尊胜与白伞展开系统",
+        "抽象力量借女性身体变成可观看图像",
+        "三条阅读线索",
+        "看概念",
+        "先分清般若、空性与觉悟的关系",
+        "看形象",
+        "再看身色、面臂、手印和持物",
+        "看系统",
+        "最后连接经典、陀罗尼和崇拜传统",
+        "图像判断",
+        "佛母是一套视觉化方法",
+        "智慧、空性、神咒和护持被组织成可观看的图像。",
+        "女性本尊承载抽象力量",
+        "身体、面容和法器让哲学关系进入艺术史线索。",
+        "核心结论：佛母艺术把智慧根源、护法能量、修法系统和防护空间连成一条可见脉络。"
+      ]
+    },
+    {
+      "id": "buddhist-mother-20260606-02",
+      "title": "四类佛母的识别框架",
+      "subtitle": "从称号误读到看懂图像、法器和修法系统",
+      "layout_type": "premium-transformation-logic",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "transformation-logic",
+      "supporting_patterns": ["three-zone", "relation-arrow", "metric-row", "conclusion-band"],
+      "thesis": "识别佛母图像时，先看概念根源，再看身相法器，最后连接经典和修法传统。",
+      "composition": {
+        "dominant_structure": "三段式识别框架从称号混乱进入三层读法，再输出可复用的艺术谱系。",
+        "not_card_grid": true,
+        "visible_marks": ["三段分区", "中间方法", "关系箭头", "指标行", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "zones": [
+        {
+          "id": "confusion",
+          "label": "初看状态",
+          "title": "名字混乱",
+          "icon": "folder",
+          "tone": "gray",
+          "insight": "初见时只看见一串称号，难以判断彼此关系。",
+          "bullets": [
+            "般若、尊胜、白伞盖都叫佛母",
+            "一髻形象猛烈，容易脱离智慧主线",
+            "法器、手印和颜色信息分散"
+          ],
+          "essence": "初见混乱"
+        },
+        {
+          "id": "method",
+          "label": "中间方法",
+          "title": "三层读法",
+          "icon": "target",
+          "tone": "blue",
+          "emphasis": true,
+          "insight": "先看哲学根源，再看形象特征，最后看仪轨系统。",
+          "bullets": [
+            "根源：般若与空性",
+            "形象：身体、手印、持物",
+            "系统：经典、陀罗尼、护持"
+          ],
+          "essence": "识别路径"
+        },
+        {
+          "id": "lineage",
+          "label": "识别结果",
+          "title": "艺术脉络",
+          "icon": "network",
+          "tone": "green",
+          "insight": "不同佛母承担不同的智慧表达方式。",
+          "bullets": [
+            "般若佛母提供中心和根",
+            "一髻佛母把智慧转为护法力量",
+            "尊胜与白伞盖展开寿命、净障、防护"
+          ],
+          "essence": "可见谱系"
+        }
+      ],
+      "relations": [
+        { "from": "confusion", "to": "method", "label": "从称号进入概念", "tone": "blue" },
+        { "from": "method", "to": "lineage", "label": "从特征连成脉络", "tone": "green" }
+      ],
+      "metrics": [
+        { "label": "根", "value": "般若与空性", "color": "#0757D8" },
+        { "label": "力", "value": "一髻与护法", "color": "#E77800" },
+        { "label": "场", "value": "尊胜与白伞盖", "color": "#128348" }
+      ],
+      "conversion_artifact": {
+        "title": "佛母图像速读卡",
+        "subtitle": "用概念、身相、法器和修法传统四项快速定位佛母类型。",
+        "items": ["概念根源", "身体特征", "持物法器", "仪轨系统"],
+        "icon": "layers",
+        "tone": "green"
+      },
+      "conclusion": "核心结论：佛母题材把智慧、神咒和护持转化成可观看的艺术谱系。",
+      "conclusion_style": "purple",
+      "conclusion_icon": "spark",
+      "text_ledger": [
+        "四类佛母的识别框架",
+        "从称号误读到看懂图像、法器和修法系统",
+        "核心转化判断",
+        "识别佛母图像时，先看概念根源，再看身相法器，最后连接经典和修法传统。",
+        "初看状态",
+        "名字混乱",
+        "初见时只看见一串称号，难以判断彼此关系。",
+        "般若、尊胜、白伞盖都叫佛母",
+        "一髻形象猛烈，容易脱离智慧主线",
+        "法器、手印和颜色信息分散",
+        "初见混乱",
+        "中间方法",
+        "三层读法",
+        "先看哲学根源，再看形象特征，最后看仪轨系统。",
+        "根源：般若与空性",
+        "形象：身体、手印、持物",
+        "系统：经典、陀罗尼、护持",
+        "识别路径",
+        "识别结果",
+        "艺术脉络",
+        "不同佛母承担不同的智慧表达方式。",
+        "般若佛母提供中心和根",
+        "一髻佛母把智慧转为护法力量",
+        "尊胜与白伞盖展开寿命、净障、防护",
+        "可见谱系",
+        "从称号进入概念",
+        "从特征连成脉络",
+        "根",
+        "般若与空性",
+        "力",
+        "一髻与护法",
+        "场",
+        "尊胜与白伞盖",
+        "佛母图像速读卡",
+        "用概念、身相、法器和修法传统四项快速定位佛母类型。",
+        "概念根源",
+        "身体特征",
+        "持物法器",
+        "仪轨系统",
+        "核心结论：佛母题材把智慧、神咒和护持转化成可观看的艺术谱系。"
+      ]
+    },
+    {
+      "id": "buddhist-mother-20260606-03",
+      "title": "读懂佛母图像的四步路径",
+      "subtitle": "从概念来源到身相、法器与修法系统",
+      "layout_type": "premium-process-flow",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "process-flow",
+      "supporting_patterns": ["stage-spine", "stream-output", "checkpoint-row", "conclusion-band"],
+      "thesis": "阅读佛母图像，要先解除称号误读，再沿概念、身相、法器和仪轨建立谱系。",
+      "composition": {
+        "dominant_structure": "横向四阶段阅读路径，上方主轴处理从误读到谱系的顺序，中央输出带汇总可见脉络，下方检查点保证解读不跑偏。",
+        "not_card_grid": true,
+        "visible_marks": ["四阶段主轴", "方向箭头", "输出带", "检查点", "结论带"]
+      },
+      "canvas": {
+        "width": 1536,
+        "height": 1024
+      },
+      "stages": [
+        {
+          "no": "01",
+          "title": "解除称号误读",
+          "subtitle": "先把佛母从血缘想象中移出来",
+          "icon": "edit",
+          "tone": "orange",
+          "body": ["佛诞于般若", "智慧生出觉悟", "佛母是哲学关系"]
+        },
+        {
+          "no": "02",
+          "title": "找到概念根源",
+          "subtitle": "用般若佛母建立中心坐标",
+          "icon": "book-open",
+          "tone": "blue",
+          "body": ["空性本身", "经文显相", "文本与图像相连"]
+        },
+        {
+          "no": "03",
+          "title": "辨认身相法器",
+          "subtitle": "从一髻、面臂、手印和持物入手",
+          "icon": "target",
+          "tone": "green",
+          "body": ["一髻一目一齿", "三面八臂", "白伞与羂索"]
+        },
+        {
+          "no": "04",
+          "title": "连回修法系统",
+          "subtitle": "把图像放回经典、陀罗尼和护持传统",
+          "icon": "network",
+          "tone": "purple",
+          "body": ["寿命净障", "防护广覆", "艺术谱系成形"]
+        }
+      ],
+      "stream": {
+        "title": "输出一条可见的佛母艺术脉络",
+        "subtitle": "概念根源、图像特征和修法传统被组织成同一套阅读路径。",
+        "icon": "stream",
+        "tone": "green",
+        "items": ["般若为根", "一髻成力", "尊胜成修法系统", "白伞盖成防护空间"]
+      },
+      "checkpoints": [
+        {
+          "title": "概念不跑偏",
+          "body": "先确认佛母是智慧与觉悟的关系，不从血缘称谓开始读。",
+          "icon": "book-open",
+          "tone": "blue"
+        },
+        {
+          "title": "特征有证据",
+          "body": "身色、面臂数量、手印和持物都要回到原文描述。",
+          "icon": "check",
+          "tone": "green"
+        },
+        {
+          "title": "脉络能收束",
+          "body": "最后把般若、一髻、尊胜和白伞盖放回同一条艺术线索。",
+          "icon": "network",
+          "tone": "purple"
+        }
+      ],
+      "conclusion": "核心结论：佛母图像的读法，是从智慧概念进入可观看的身相、法器和护持系统。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "target",
+      "text_ledger": [
+        "读懂佛母图像的四步路径",
+        "从概念来源到身相、法器与修法系统",
+        "01",
+        "解除称号误读",
+        "先把佛母从血缘想象中移出来",
+        "佛诞于般若",
+        "智慧生出觉悟",
+        "佛母是哲学关系",
+        "02",
+        "找到概念根源",
+        "用般若佛母建立中心坐标",
+        "空性本身",
+        "经文显相",
+        "文本与图像相连",
+        "03",
+        "辨认身相法器",
+        "从一髻、面臂、手印和持物入手",
+        "一髻一目一齿",
+        "三面八臂",
+        "白伞与羂索",
+        "04",
+        "连回修法系统",
+        "把图像放回经典、陀罗尼和护持传统",
+        "寿命净障",
+        "防护广覆",
+        "艺术谱系成形",
+        "输出一条可见的佛母艺术脉络",
+        "概念根源、图像特征和修法传统被组织成同一套阅读路径。",
+        "般若为根",
+        "一髻成力",
+        "尊胜成修法系统",
+        "白伞盖成防护空间",
+        "概念不跑偏",
+        "先确认佛母是智慧与觉悟的关系，不从血缘称谓开始读。",
+        "特征有证据",
+        "身色、面臂数量、手印和持物都要回到原文描述。",
+        "脉络能收束",
+        "最后把般若、一髻、尊胜和白伞盖放回同一条艺术线索。",
+        "核心结论：佛母图像的读法，是从智慧概念进入可观看的身相、法器和护持系统。"
+      ]
+    }
+  ]
+}

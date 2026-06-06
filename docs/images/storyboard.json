@@ -58,6 +58,8 @@
         "label": "协同语言逐级升级",
         "direction": "up"
       },
+      "essence_label": "结构本质",
+      "tiers_title": "协同层级",
       "layers": [
         {
           "id": "signal",
@@ -65,6 +67,8 @@
           "title": "感受信号",
           "type": "边界感知层",
           "icon": "spark",
+          "visual_style": "constellation",
+          "motif_icons": ["spark", "target", "check"],
           "tone": "orange",
           "typical_behavior": "觉得不对、状态不干净、这里有漂移",
           "core_blocker": "只停留在人的经验里，难以共享",
@@ -78,6 +82,8 @@
           "title": "命名边界",
           "type": "语言校准层",
           "icon": "target",
+          "visual_style": "bridge",
+          "motif_icons": ["edit", "target"],
           "tone": "blue",
           "typical_behavior": "区分语言、工具、操作和完成",
           "core_blocker": "说出来像理解了，理解了像做完了",
@@ -91,6 +97,8 @@
           "title": "验证写回",
           "type": "公共结构层",
           "icon": "check",
+          "visual_style": "stack",
+          "motif_icons": ["clipboard", "check", "layers"],
           "tone": "green",
           "typical_behavior": "保存失败样本，区分验证层级",
           "core_blocker": "没有写回就无法复用",
@@ -104,6 +112,8 @@
           "title": "囫囵语调用",
           "type": "压缩调用层",
           "icon": "network",
+          "visual_style": "constellation",
+          "motif_icons": ["network", "refresh", "trophy"],
           "tone": "purple",
           "typical_behavior": "一句话唤起边界、节奏、验证和收尾",
           "core_blocker": "压缩后仍要不失真",
@@ -112,12 +122,15 @@
           "source_ids": ["S2"]
         }
       ],
-      "user_tiers": [
+      "tiers": [
         {
           "id": "A",
           "label": "A 信号层",
           "headline": "人先感到漂移，Agent 还不能稳定还原",
           "body": ["即时感受", "经验判断", "临场纠偏"],
+          "icon": "spark",
+          "visual_style": "constellation",
+          "motif_icons": ["spark", "users"],
           "tone": "orange"
         },
         {
@@ -125,6 +138,9 @@
           "label": "B 结构层",
           "headline": "双方开始用同一套边界检查行动",
           "body": ["命名边界", "验证层级", "失败样本"],
+          "icon": "target",
+          "visual_style": "bridge",
+          "motif_icons": ["users", "target"],
           "tone": "blue"
         },
         {
@@ -132,6 +148,9 @@
           "label": "C 调用层",
           "headline": "短信号可以召回完整协同方法",
           "body": ["协同执行卡", "哒哒哒", "共同收尾"],
+          "icon": "network",
+          "visual_style": "constellation",
+          "motif_icons": ["network", "refresh", "trophy"],
           "tone": "green"
         }
       ],
@@ -192,11 +211,11 @@
         "共同语言如何长出来",
         "从混乱信号到可复用囫囵语的四层升级",
         "协同语言逐级升级",
-        "用户层级",
-        "典型行为",
-        "核心卡点",
-        "匹配人群",
-        "需求本质",
+        "协同层级",
+        "表现线索",
+        "关键阻碍",
+        "适配场景",
+        "结构本质",
         "1",
         "感受信号",
         "边界感知层",

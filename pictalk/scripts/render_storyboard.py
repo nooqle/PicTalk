@@ -52,6 +52,12 @@ ICONS = {
     "report": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l3 3v15H6z"/><path d="M15 3v4h4"/><path d="M9 17v-5"/><path d="M13 17V9"/><path d="M17 17v-3"/></svg>',
     "stream": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10"/><path d="M4 12h16"/><path d="M4 17h12"/><path d="m18 8 3 4-3 4"/></svg>',
     "meal": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11h16a8 8 0 0 1-16 0z"/><path d="M7 11c0-3 2-5 5-5s5 2 5 5"/><path d="M8 21h8"/></svg>',
+    "umbrella": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11a9 9 0 0 1 18 0z"/><path d="M12 11v8a3 3 0 0 0 6 0"/><path d="M7 11a5 5 0 0 1 10 0"/></svg>',
+    "flame": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4 0 7-3 7-7 0-3-1.6-5.4-4.8-8.1-.2 2-1.2 3.5-2.7 4.6.2-3-1.1-5.9-4-8.5.3 3.5-2.5 5.5-2.5 9.6A7 7 0 0 0 12 22z"/><path d="M12 18a3 3 0 0 0 3-3c0-1.2-.6-2.3-1.8-3.3-.1 1-.6 1.8-1.4 2.3.1-1.5-.5-2.9-2-4.2.2 1.8-1.3 2.8-1.3 4.8A3.5 3.5 0 0 0 12 18z"/></svg>',
+    "eye": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/><circle cx="12" cy="12" r="3"/></svg>',
+    "vase": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6"/><path d="M10 3v4l-3 4v8a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-8l-3-4V3"/><path d="M8 13h8"/><path d="M9 17h6"/></svg>',
+    "wheel": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 4v6"/><path d="M12 14v6"/><path d="M4 12h6"/><path d="M14 12h6"/><path d="m6.3 6.3 4.2 4.2"/><path d="m13.5 13.5 4.2 4.2"/><path d="m17.7 6.3-4.2 4.2"/><path d="m10.5 13.5-4.2 4.2"/></svg>',
+    "scroll": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5h10a3 3 0 0 1 0 6H8"/><path d="M8 11h8a3 3 0 0 1 0 6H6"/><path d="M6 17a3 3 0 0 1 0-6h2"/><path d="M8 5a3 3 0 0 0 0 6"/><path d="M6 17a3 3 0 0 0 0-6"/></svg>',
 }
 
 ICON_ALIASES = {
@@ -99,6 +105,29 @@ def esc(value: Any) -> str:
 def icon(name: str | None) -> str:
     key = ICON_ALIASES.get(name or "", name or "layers")
     return ICONS.get(key, ICONS["layers"])
+
+
+def motif_visual(item: dict[str, Any], tone: str, base_icon: str | None = None) -> str:
+    icons = item.get("motif_icons") or [item.get("icon") or base_icon or "layers"]
+    if not isinstance(icons, list):
+        icons = [icons]
+    clean_icons = [str(value) for value in icons if value][:3] or [str(item.get("icon") or base_icon or "layers")]
+    primary = clean_icons[0]
+    primary_key = ICON_ALIASES.get(primary, primary)
+    style = str(item.get("visual_style") or ("single" if len(clean_icons) == 1 else "constellation"))
+    if style not in {"single", "stack", "constellation", "shield", "bridge", "pyramid"}:
+        style = "single" if len(clean_icons) == 1 else "constellation"
+
+    # A motif is allowed one semantic icon only. Extra depth must be expressed
+    # through geometric decoration so small diagram anchors do not become
+    # repeated, overlapped icon piles.
+    return f"""
+        <div class="visual-motif motif-{esc(style)} tone-{tone}" data-motif-icon="{esc(primary_key)}">
+          <span class="motif-decor decor-a"></span>
+          <span class="motif-decor decor-b"></span>
+          <span class="motif-decor decor-c"></span>
+          <span class="motif-symbol">{icon(primary)}</span>
+        </div>"""
 
 
 def color_class(index: int, preferred: str | None = None) -> str:
@@ -344,6 +373,8 @@ def render_matrix(card: dict[str, Any]) -> str:
 
 def render_layer_stack(card: dict[str, Any]) -> str:
     sections = card.get("sections", [])
+    axis = card.get("axis") or {}
+    upgrade_label = card.get("axis_label") or axis.get("label") or "层级逐级升级"
     layer_cards = []
     for i, section in enumerate(sections):
         cc = color_class(i, section.get("color"))
@@ -374,7 +405,7 @@ def render_layer_stack(card: dict[str, Any]) -> str:
         side += "</div>"
         body = f"""
       <div class="hierarchy-body">
-        <div class="demand-arrow"><div>需求层次逐级升级</div></div>
+        <div class="demand-arrow"><div>{esc(upgrade_label)}</div></div>
         <div class="layer-stack" style="--step-count:{len(sections)}">{"".join(layer_cards)}</div>
         {side}
       </div>"""
@@ -399,14 +430,14 @@ def render_layer_stack(card: dict[str, Any]) -> str:
 
 def render_premium_hierarchy_diffusion(card: dict[str, Any]) -> str:
     labels = {
-        "typical_behavior": "典型行为",
-        "core_blocker": "核心卡点",
-        "matched_audience": "匹配人群",
+        "typical_behavior": "表现线索",
+        "core_blocker": "关键阻碍",
+        "matched_audience": "适配场景",
     }
     labels.update(card.get("field_labels") or {})
 
     layers = card.get("layers") or []
-    tiers = card.get("user_tiers") or []
+    tiers = card.get("tiers") or card.get("user_tiers") or []
     mechanisms = card.get("mechanisms") or []
     summaries = card.get("summary_cards") or []
     axis = card.get("axis") or {}
@@ -433,7 +464,7 @@ def render_premium_hierarchy_diffusion(card: dict[str, Any]) -> str:
         <article class="benchmark-layer panel tone-{tone}">
           <div class="benchmark-layer-no">{esc(layer.get("no", visual_index + 1))}</div>
           <div class="benchmark-icon-block tone-{tone}">
-            <div class="benchmark-icon">{icon(layer.get("icon"))}</div>
+            {motif_visual(layer, tone, layer.get("icon"))}
           </div>
           <div class="benchmark-layer-copy">
             <div class="premium-layer-head">
@@ -445,7 +476,7 @@ def render_premium_hierarchy_diffusion(card: dict[str, Any]) -> str:
               <div><b>{esc(labels["core_blocker"])}</b><p>{esc(layer.get("core_blocker", ""))}</p></div>
               <div><b>{esc(labels["matched_audience"])}</b><p>{esc(layer.get("matched_audience", ""))}</p></div>
             </div>
-            <div class="benchmark-essence"><b>{esc(card.get("essence_label", "需求本质"))}</b><span>{esc(layer.get("essence", ""))}</span></div>
+            <div class="benchmark-essence"><b>{esc(card.get("essence_label", "结构本质"))}</b><span>{esc(layer.get("essence", ""))}</span></div>
           </div>
         </article>"""
         )
@@ -465,14 +496,7 @@ def render_premium_hierarchy_diffusion(card: dict[str, Any]) -> str:
                 tier_keys[str(key)] = i
         body = tier.get("body") or []
         rank_class = " is-top" if i == 0 else ""
-        if i == 0:
-            tier_visual = f"""
-          <div class="tier-pyramid-visual">
-            <div class="tier-pyramid-crown">{icon("trophy")}</div>
-            <div class="tier-pyramid-person">{icon(tier.get("icon", "users"))}</div>
-          </div>"""
-        else:
-            tier_visual = f'<div class="tier-icon-badge">{icon(tier.get("icon", "users"))}</div>'
+        tier_visual = f'<div class="tier-motif-wrap">{motif_visual(tier, tone, tier.get("icon", "layers"))}</div>'
         tier_chunks.append(
             f"""
         <article class="benchmark-tier tone-{tone}{rank_class}">
@@ -563,7 +587,7 @@ def render_premium_hierarchy_diffusion(card: dict[str, Any]) -> str:
           {"".join(connector_paths)}
         </svg>
         <aside class="benchmark-tier-panel panel">
-          <div class="tier-panel-title">{esc(card.get("tiers_title", "用户层级"))}</div>
+          <div class="tier-panel-title">{esc(card.get("tiers_title", "关联层级"))}</div>
           {callout_html}
           <div class="benchmark-tier-stack">{"".join(tier_chunks)}</div>
         </aside>
@@ -580,40 +604,28 @@ def render_premium_hierarchy_diffusion(card: dict[str, Any]) -> str:
 def render_premium_cycle_system(card: dict[str, Any]) -> str:
     center = card.get("center") or {}
     center_lines = center.get("lines") or []
-    phase_items = card.get("cycle_phases") or card.get("top_flow") or []
-    phase_chunks = []
-    for i, phase in enumerate(phase_items[:4], start=1):
-        tone = tone_class(phase.get("tone"), color_class(i - 1))
-        phase_chunks.append(
-            f"""
-        <div class="cycle-phase-chip phase-{i} tone-{tone}">
-          <div class="phase-chip-icon">{icon(phase.get("icon"))}</div>
-          <span>{esc(phase.get("label", ""))}</span>
-        </div>"""
-        )
     center_html = f"""
       <div class="cycle-core-halo"></div>
       <div class="premium-cycle-center">
         <h2>{esc(center.get("main", ""))}</h2>
         {"".join(f"<p>{esc(line)}</p>" for line in center_lines)}
-      </div>
-      {"".join(phase_chunks)}"""
+      </div>"""
 
     nodes = card.get("loop_nodes") or []
     positions_6 = [
         "left:50%;top:0;transform:translateX(-50%)",
-        "right:8px;top:168px",
-        "right:38px;bottom:82px",
+        "right:18px;top:168px",
+        "right:58px;top:548px",
         "left:50%;bottom:0;transform:translateX(-50%)",
-        "left:38px;bottom:82px",
-        "left:8px;top:168px",
+        "left:58px;top:548px",
+        "left:18px;top:168px",
     ]
     positions_5 = [
         "left:50%;top:0;transform:translateX(-50%)",
-        "right:8px;top:218px",
-        "right:118px;bottom:20px",
-        "left:118px;bottom:20px",
-        "left:8px;top:218px",
+        "right:24px;top:218px",
+        "right:138px;bottom:38px",
+        "left:138px;bottom:38px",
+        "left:24px;top:218px",
     ]
     positions = positions_6 if len(nodes) >= 6 else positions_5
     node_chunks = []
@@ -621,11 +633,13 @@ def render_premium_cycle_system(card: dict[str, Any]) -> str:
         tone = tone_class(node.get("tone"), color_class(i))
         node_chunks.append(
             f"""
-        <article class="premium-loop-node panel tone-{tone}" style="{positions[i]}">
+        <article class="premium-loop-node panel tone-{tone} slot-{i + 1}" style="{positions[i]}">
           <div class="loop-no">{esc(node.get("no", i + 1))}</div>
-          <div class="premium-icon iw-{tone}">{icon(node.get("icon"))}</div>
-          <h3>{esc(node.get("title", ""))}</h3>
-          <p>{esc(node.get("subtitle", ""))}</p>
+          <div class="premium-icon loop-icon iw-{tone}">{icon(node.get("icon"))}</div>
+          <div class="loop-copy">
+            <h3>{esc(node.get("title", ""))}</h3>
+            <p>{esc(node.get("subtitle", ""))}</p>
+          </div>
         </article>"""
         )
 
@@ -643,32 +657,37 @@ def render_premium_cycle_system(card: dict[str, Any]) -> str:
         </article>"""
         )
 
+    cycle_conclusion = ""
+    if card.get("conclusion"):
+        cycle_conclusion = f"""
+      <div class="cycle-conclusion-note panel">
+        <div class="cycle-conclusion-icon">{icon(card.get("conclusion_icon", "target"))}</div>
+        <p>{esc(card.get("conclusion", ""))}</p>
+      </div>"""
+
     inner = f"""
     <section class="layout-region premium-cycle">
       <div class="premium-cycle-canvas">
-        <svg class="premium-cycle-arrows" viewBox="0 0 990 840" aria-hidden="true">
+        <svg class="premium-cycle-arrows" viewBox="0 0 990 880" aria-hidden="true">
           <defs>
-            <marker id="cycle-premium-arrow" markerWidth="13" markerHeight="13" refX="10" refY="6.5" orient="auto" markerUnits="userSpaceOnUse">
-              <path d="M0 0 12 6 0 12Z" fill="#0757D8"/>
+            <marker id="cycle-premium-arrow" markerWidth="14" markerHeight="14" refX="11" refY="7" orient="auto" markerUnits="userSpaceOnUse">
+              <path d="M0 0 14 7 0 14Z" fill="#0757D8"/>
             </marker>
           </defs>
-          <circle cx="496" cy="425" r="312" stroke="#DCE8FF" stroke-width="2" fill="none" opacity=".85"/>
-          <circle cx="496" cy="425" r="198" stroke="#BFD4FF" stroke-width="2" fill="none" stroke-dasharray="10 13" opacity=".72"/>
-          <path d="M496 296 V182" stroke="#BFD4FF" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
-          <path d="M650 425 H808" stroke="#BFD4FF" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
-          <path d="M496 554 V700" stroke="#BFD4FF" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
-          <path d="M340 425 H185" stroke="#BFD4FF" stroke-width="2.4" stroke-linecap="round" opacity=".75"/>
-          <path d="M500 110 C690 106 832 230 850 414" stroke="#8DB3FF" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".56"/>
-          <path d="M822 523 C740 704 565 775 398 720" stroke="#0757D8" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".58"/>
-          <path d="M314 704 C145 630 105 425 183 246" stroke="#0757D8" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".58"/>
-          <path d="M220 166 C294 90 386 80 462 108" stroke="#8DB3FF" stroke-width="7" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".56"/>
+          <circle cx="495" cy="430" r="378" stroke="#D7E5FF" stroke-width="2" fill="none" opacity=".54"/>
+          <path d="M592.8 64.9 A378 378 0 0 1 796.9 202.5" stroke="#7AA7FF" stroke-width="7.6" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".78"/>
+          <path d="M843.0 282.3 A378 378 0 0 1 831.8 601.6" stroke="#0757D8" stroke-width="7.6" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".74"/>
+          <path d="M771.5 687.8 A378 378 0 0 1 541.1 805.2" stroke="#7AA7FF" stroke-width="7.6" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".78"/>
+          <path d="M448.9 805.2 A378 378 0 0 1 218.5 687.8" stroke="#0757D8" stroke-width="7.6" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".74"/>
+          <path d="M147.0 577.7 A378 378 0 0 1 158.2 258.4" stroke="#0757D8" stroke-width="7.6" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".74"/>
+          <path d="M218.5 172.2 A378 378 0 0 1 448.9 54.8" stroke="#7AA7FF" stroke-width="7.6" fill="none" stroke-linecap="round" marker-end="url(#cycle-premium-arrow)" opacity=".78"/>
         </svg>
         {center_html}
         {"".join(node_chunks)}
       </div>
-      <div class="premium-row-title">{esc(card.get("outputs_title", "关键产出"))}</div>
+      <div class="premium-row-title cycle-output-title">{esc(card.get("outputs_title", "关键产出"))}</div>
       <div class="premium-output-grid" style="--output-count:{len(card.get("outputs") or [])}">{"".join(output_chunks)}</div>
-      {conclusion(card)}
+      {cycle_conclusion}
     </section>"""
     return sheet(card, "premium-sheet premium-cycle-sheet", inner)
 

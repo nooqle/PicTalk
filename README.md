@@ -7,76 +7,88 @@
 
 [English README](./README.en.md)
 
-PicTalk 是一个把长文、报告、会议纪要和产品说明转成信息图的 Agent Skill。
+PicTalk 是一个 Agent Skill，用来把文章、报告、会议纪要和产品说明生成信息图。
 
-很多内容写完以后，真正要展示给别人看时，需要一张图先把结构讲清楚。PicTalk 做的就是这件事：读取素材，提炼重点，选择合适的图式，然后生成一张或几张可以直接放进汇报里的信息图。
-
-## 能做什么
-
-- 从文章、Markdown、会议纪要、PDF 摘要或粘贴文本中提取核心结构。
-- 根据内容自动选择图式，例如层级、流程、循环、转化、时间线、矩阵。
-- 输出中文或英文信息图，适合策略汇报、产品说明、文章配图和演讲材料。
-- 使用 HTML/CSS 模板渲染最终图片，中文、数字和标题会更稳定。
-- 提供分镜 JSON、渲染脚本和校验脚本，方便重复生成和继续修改。
-
-## 样例
-
-### 层级扩散
-
-![层级扩散图式](./docs/images/card-01.png)
-
-### 协同循环
-
-![协同循环图式](./docs/images/card-02.png)
-
-### 转化逻辑
-
-![转化逻辑图式](./docs/images/card-03.png)
-
-### 用户操作流程
-
-![用户操作流程图式](./docs/images/meal-flow.png)
-
-样例文件在 `docs/images/`，对应分镜是 `docs/images/storyboard.json` 和 `docs/images/meal-flow-storyboard.json`。
+它解决的是一个很常见的展示问题：内容已经写完了，但读者需要先看到结构。PicTalk 会读取素材，提炼论点和关系，选择合适的图式，输出一张或几张可以放进文章、汇报或演示里的信息图。
 
 ## 快速开始
 
-### Claude Code
+### Codex
+
+PowerShell:
+
+```powershell
+git clone https://github.com/nooqle/PicTalk.git
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.codex\skills" | Out-Null
+Copy-Item -Recurse -Force ".\PicTalk\pictalk" "$env:USERPROFILE\.codex\skills\pictalk"
+```
+
+bash:
 
 ```bash
 git clone https://github.com/nooqle/PicTalk.git
-cp -r PicTalk/pictalk ~/.claude/skills/pictalk
+mkdir -p ~/.codex/skills
+cp -R PicTalk/pictalk ~/.codex/skills/pictalk
 ```
 
-安装后可以这样说：
-
-```text
-用 PicTalk 把这篇文章做成 3 张信息图，中文输出，适合放进汇报。
-```
-
-### Codex
-
-把 `pictalk/` 放到 Codex 的 skills 目录后使用：
+使用时可以这样说：
 
 ```text
 Use $pictalk to turn this article into presentation-ready infographics.
 ```
 
-### 本地直接运行
+### Claude Code
 
-仓库里包含可运行的示例分镜：
+PowerShell:
 
-```bash
-python pictalk/scripts/validate_storyboard.py docs/images/storyboard.json
-python pictalk/scripts/render_storyboard.py docs/images/storyboard.json --output-dir docs/images
+```powershell
+git clone https://github.com/nooqle/PicTalk.git
+New-Item -ItemType Directory -Force "$env:USERPROFILE\.claude\skills" | Out-Null
+Copy-Item -Recurse -Force ".\PicTalk\pictalk" "$env:USERPROFILE\.claude\skills\pictalk"
 ```
 
-生成流程图示例：
+bash:
 
 ```bash
-python pictalk/scripts/validate_storyboard.py docs/images/meal-flow-storyboard.json
-python pictalk/scripts/render_storyboard.py docs/images/meal-flow-storyboard.json --output-dir docs/images
+git clone https://github.com/nooqle/PicTalk.git
+mkdir -p ~/.claude/skills
+cp -R PicTalk/pictalk ~/.claude/skills/pictalk
 ```
+
+安装后可以这样说：
+
+```text
+用 PicTalk 把这篇文章做成 3 张中文信息图，适合放进汇报。
+```
+
+## 示例
+
+### 抽象方法论变成循环图
+
+![默会知识协同循环](./docs/images/hulunyu-02.png)
+
+### 文章内容变成阅读路径
+
+![佛母图像阅读路径](./docs/images/buddhist-mother-20260606-03.png)
+
+### 框架型文章变成识别图
+
+![四类佛母识别框架](./docs/images/buddhist-mother-20260606-02.png)
+
+更多示例在 [docs/images](./docs/images)。示例分镜包括：
+
+- [article-examples-20260606-storyboard.json](./docs/images/article-examples-20260606-storyboard.json)
+- [storyboard.json](./docs/images/storyboard.json)
+- [buddhist-mother-storyboard.json](./docs/images/buddhist-mother-storyboard.json)
+- [meal-flow-storyboard.json](./docs/images/meal-flow-storyboard.json)
+
+## 适合什么内容
+
+- 公众号文章、博客文章、方法论长文
+- 产品说明、功能流程、AI 工作流
+- 会议纪要、调研材料、项目复盘
+- 报告摘要、策略材料、培训材料
+- 需要保留专有名词、数字和中文标题的信息图
 
 ## 常用请求
 
@@ -96,17 +108,17 @@ python pictalk/scripts/render_storyboard.py docs/images/meal-flow-storyboard.jso
 基于这份 Markdown 生成一张 3:4 竖版中文信息图。
 ```
 
-## 工作流程
+## 工作方式
 
-PicTalk 的基本流程很简单：
+PicTalk 的基本流程：
 
 1. 读取素材，识别主题、论点、阶段、角色、关系和结论。
-2. 决定输出几张图。
-3. 选择图式并生成 storyboard。
-4. 用 HTML/CSS 模板渲染 PNG。
-5. 运行校验脚本，检查结构、尺寸和文字覆盖。
+2. 判断需要输出几张图。
+3. 选择图式，生成 storyboard JSON。
+4. 使用 HTML/CSS 模板渲染 PNG。
+5. 运行校验脚本，检查结构、尺寸、文本和布局。
 
-如果你只需要快速出图，可以让 Agent 直接跑完整流程。如果你要精修，可以先改 storyboard，再重新渲染。
+如果只想快速出图，可以让 Agent 直接完成整套流程。如果需要精修，可以修改 storyboard 后重新渲染。
 
 ## 图式
 
@@ -114,10 +126,10 @@ PicTalk 的基本流程很简单：
 
 | 图式 | 适合内容 |
 | --- | --- |
-| `premium-hierarchy-diffusion` | 层级、成熟度、能力栈、需求升级 |
+| `premium-hierarchy-diffusion` | 层级、成熟度、能力栈、结构升级 |
 | `premium-cycle-system` | 反馈循环、运营飞轮、协同循环 |
 | `premium-transformation-logic` | 旧状态到新状态、问题到方案、信号到结构 |
-| `premium-process-flow` | 用户旅程、产品流程、AI 处理管线、流式输出 |
+| `premium-process-flow` | 操作流程、产品流程、AI 处理管线、流式输出 |
 
 ### 通用图式
 
@@ -130,15 +142,14 @@ PicTalk 的基本流程很简单：
 | `cycle` | 循环机制、持续改进 |
 | `comparison` / `transformation` | 对比、转化、方案说明 |
 
-## 设计系统
+## 设计原则
 
-PicTalk 默认使用偏克制的汇报风格：
-
-- 竖版 `1086x1448`，适合文章配图和长图。
-- 横版 `1536x1024`，适合流程图和演示页。
-- 主色以深蓝为主，配合绿色、橙色、紫色做语义区分。
-- 模块有固定圆角、边框、阴影和留白规则。
-- 图中优先使用图标、编号、箭头、连接线和结论带来表达结构。
+- 先确定内容关系，再选择图式。
+- 一张图只承载一个主要结构，例如层级、流程、循环、转化或矩阵。
+- 可见文字由 storyboard 提供，中文、数字、日期和专有名词优先使用确定性文本渲染。
+- 每个视觉锚点使用一个与内容相关的语义图标；几何底纹可以变化，但不堆叠多个图标。
+- 颜色按语义使用：蓝色表示主线，绿色表示产出或系统，橙色表示警示或转折，紫色表示高级层级或扩展。
+- 默认不加水印，方便直接用于文章和汇报。
 
 默认色彩：
 
@@ -153,14 +164,28 @@ PicTalk 默认使用偏克制的汇报风格：
 | 边框 | `#BFD2F5` |
 | 背景 | `#FFFFFF` |
 
+## 本地渲染
+
+需要 Python 和 Playwright：
+
+```bash
+pip install playwright
+playwright install chromium
+```
+
+渲染示例：
+
+```bash
+python pictalk/scripts/validate_storyboard.py docs/images/storyboard.json
+python pictalk/scripts/render_storyboard.py docs/images/storyboard.json --output-dir docs/images --keep-html
+python pictalk/scripts/qa_rendered_html.py docs/images/card-01.html docs/images/card-02.html docs/images/card-03.html
+```
+
 ## 项目结构
 
 ```text
 pictalk/
 ├── SKILL.md
-├── agents/
-│   ├── openai.yaml
-│   └── generic.yaml
 ├── assets/
 │   ├── storyboard-template.json
 │   └── template-infographic.html
@@ -179,30 +204,9 @@ pictalk/
     └── analyze_layout_alignment.py
 
 docs/
-├── images/
-│   ├── card-01.png
-│   ├── card-02.png
-│   ├── card-03.png
-│   ├── meal-flow.png
-│   ├── storyboard.json
-│   └── meal-flow-storyboard.json
-└── pictalk-premium-layout-design.md
-```
-
-## 校验
-
-常用校验命令：
-
-```bash
-python pictalk/scripts/validate_storyboard.py docs/images/storyboard.json
-python pictalk/scripts/render_storyboard.py docs/images/storyboard.json --output-dir docs/images --keep-html
-python pictalk/scripts/qa_rendered_html.py docs/images/card-01.html docs/images/card-02.html docs/images/card-03.html
-```
-
-如果你有参考图，可以比较版心、留白和内容覆盖率：
-
-```bash
-python pictalk/scripts/qa_benchmark_image.py benchmark.png docs/images/card-01.png
+└── images/
+    ├── *.png
+    └── *storyboard.json
 ```
 
 ## License

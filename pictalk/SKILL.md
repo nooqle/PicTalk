@@ -11,7 +11,7 @@ PicTalk is the workflow name, not a visible watermark. Do not place `PicTalk`, s
 
 The outputs are text-accurate information graphics, not decorative AI posters. All visible text must originate from the storyboard `text_ledger` and should be rendered with deterministic HTML/SVG/PPTX text layers by default. Image generation may be used as an optional visual-polish path, but do not depend on raster-generated text for Chinese, numbers, formulas, labels, or final delivery when a deterministic renderer is available.
 
-When the user asks for "one image that explains it", "有质感", "层级指示", "逻辑好的一张图", or a reference-grade article image, prefer a **premium locked layout** before any generic layout. Premium layouts use semantic slots such as layer behavior, blocker, audience, essence, relation, mechanism, output, and conclusion; do not reduce them to generic `sections`.
+When the user asks for "one image that explains it", "有质感", "层级指示", "逻辑好的一张图", or a reference-grade article image, prefer a **premium locked layout** before any generic layout. Premium layouts use semantic slots such as layer signal, constraint, context, essence, relation, mechanism, output, and conclusion; do not reduce them to generic `sections`.
 
 ## Quick Start
 
@@ -23,7 +23,7 @@ When the user asks for "one image that explains it", "有质感", "层级指示"
    - `4-7 cards`: a dense article with multiple frameworks, phases, roles, or workflows.
    - More than `7 cards`: ask whether to split into chapters unless the user explicitly wants a long deck.
 4. Select a visual pattern per image. For reference-grade outputs, try premium layouts first: `premium-hierarchy-diffusion`, `premium-cycle-system`, `premium-transformation-logic`, or `premium-process-flow`. Use generic timelines, arrows, matrices, or layer stacks only when the premium layouts do not match the logic.
-5. Draft a storyboard JSON before rendering. Include exact text strings, primary visual pattern, layout type, visual hierarchy, icon ideas, palette roles, and the evidence each image is based on.
+5. Draft a storyboard JSON before rendering. Include exact text strings, primary visual pattern, layout type, visual hierarchy, content-specific `icon`, optional `visual_style`, palette roles, and the evidence each image is based on. Use `motif_icons` only as a primary-icon candidate list; the final motif must render one semantic icon, never a pile of overlapping icons.
 6. Render images using the locked renderer first:
    - **Primary**: HTML/CSS rendering via `scripts/render_storyboard.py`, using one of the supported locked layouts.
    - **Optional polish**: if an image-capable model is available, construct prompts from [references/image-prompts.md](references/image-prompts.md), but keep final text deterministic unless the user explicitly accepts raster text risk.
@@ -53,11 +53,11 @@ Match logic to a repeatable visual pattern, then bind that pattern to a renderer
 - `premium-hierarchy-diffusion`: 4-level hierarchy, right-side tiers, layer-to-tier connectors, mechanism row, summary cards, and conclusion band.
 - `premium-cycle-system`: top logic strip, central mechanism, 5-6 loop nodes, output row, and conclusion band.
 - `premium-transformation-logic`: old state -> mechanism -> new state with labeled relation arrows, metrics, and conclusion band.
-- `premium-process-flow`: 4-stage user or system workflow with a stage spine, directional arrows, stream/output band, checkpoint row, and conclusion band.
+- `premium-process-flow`: 4-stage operation or system workflow with a stage spine, directional arrows, stream/output band, checkpoint row, and conclusion band.
 - `transformation`: past -> present, old model -> new model, problem -> solution.
 - `timeline`: time boxes, version path, meeting agenda, history, rollout, or incident sequence.
 - `comparison`: two or three columns showing roles, responsibilities, metrics, or tradeoffs.
-- `layer-stack`: levels, maturity stages, audience tiers, or capability layers.
+- `layer-stack`: levels, maturity stages, related tiers, or capability layers.
 - `cycle`: operating loop, flywheel, feedback mechanism, or iterative process.
 - `arrow-flow`: ordered workflow with arrows, checkpoints, handoffs, and decisions.
 - `matrix`: categories crossed with evidence, owners, impact, or decision directions.
@@ -99,6 +99,8 @@ Composition gate before rendering:
 - Name the primary pattern for each image.
 - Confirm the pattern matches the source logic.
 - Use cards only as local containers inside a larger diagram.
+- Choose visual anchors from the article semantics. Do not reuse the same decorative icon or shape just because the template allows it.
+- For premium hierarchy cards, set a distinct, content-specific `icon` on every layer and tier. A motif may contain only one semantic SVG icon; `visual_style` should add geometric rhythm such as shield, stack, bridge, constellation, or pyramid marks around that icon. Do not stack multiple line icons inside one motif.
 - Include visible structural marks where appropriate: arrows, axes, ladders, timelines, swimlanes, loops, brackets, connectors, badges, scales, or funnels.
 - Remove any visible `PicTalk` label, watermark, skill name, internal source path, or renderer label.
 
@@ -119,12 +121,12 @@ Use `scripts/render_storyboard.py` as the default production path:
 
 Supported renderer layouts are:
 
-- `premium-hierarchy-diffusion`: reference-grade hierarchy image with 4 semantic layers, 3 user/audience tiers, optional tier callout, 3 icon-led mechanisms, summary cards, cross-connectors, and conclusion band.
-- `premium-cycle-system`: reference-grade operating loop with top strip, double-ring path, inner phase chips, 5-6 loop nodes, output cards, and conclusion band.
+- `premium-hierarchy-diffusion`: reference-grade hierarchy image with 4 semantic layers, 3 related tiers, optional tier callout, 3 icon-led mechanisms, summary cards, cross-connectors, and conclusion band.
+- `premium-cycle-system`: reference-grade operating loop with top strip, clean center, segmented circular arrows, 5-6 loop nodes, output cards, and conclusion band.
 - `premium-transformation-logic`: reference-grade input/gate/output conversion machine with zone insights, labeled arrows, conversion artifact band, metrics, and conclusion band.
 - `premium-process-flow`: reference-grade four-step workflow with fixed stages, arrows, stream output band, checkpoint row, and conclusion band.
 - `cycle`: one center thesis with 4-6 surrounding nodes, optional top flow, metric/output row, and conclusion band.
-- `layer-stack`: one upgrade ladder or demand hierarchy with 3-5 layers; optional right-side user tiers.
+- `layer-stack`: one upgrade ladder or layered hierarchy with 3-5 layers; optional right-side tiers.
 - `transformation` / `comparison`: 2-3 zones connected by arrows.
 - `arrow-flow`: 3-6 ordered steps with directional handoff.
 - `timeline`: 3-6 milestones on a visible axis.
@@ -132,7 +134,7 @@ Supported renderer layouts are:
 
 The renderer must fail on unsupported layouts rather than silently falling back to a generic card grid.
 
-Premium layout rule: if `layout_type` starts with `premium-`, fill its premium-specific fields (`layers`, `user_tiers`, `mechanisms`, `loop_nodes`, `zones`, `stages`, `stream`, `checkpoints`, etc.) and set `layout_family: "premium"`. Do not try to satisfy premium layouts with generic `sections`; the validator should reject missing premium slots.
+Premium layout rule: if `layout_type` starts with `premium-`, fill its premium-specific fields (`layers`, `tiers`, `mechanisms`, `loop_nodes`, `zones`, `stages`, `stream`, `checkpoints`, etc.) and set `layout_family: "premium"`. Use `tiers` for related right-side levels. Do not try to satisfy premium layouts with generic `sections`; the validator should reject missing premium slots.
 
 #### Optional Path: Image Prompt Or Polish
 

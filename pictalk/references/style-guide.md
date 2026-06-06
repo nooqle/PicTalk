@@ -48,14 +48,14 @@ Customization rule: preserve contrast and assign colors by meaning, not decorati
 - Title block: large centered title with selective color emphasis on 1-3 key words.
 - Subtitle line: short explanatory sentence below title, sometimes flanked by thin horizontal rules.
 - Modules: rounded rectangles with 8-18 px radius, thin colored border, white or pale fill, subtle shadow.
-- Icon wells: circular or rounded squares, usually pale fill with a bold monochrome icon.
-- Number badges: filled circles near the top-left or top-center of sections.
+- Icon wells: circular or rounded squares, usually pale fill with one bold monochrome semantic icon. Do not overlap multiple line icons inside one well.
+- Number badges: filled circles with consistent placement inside a layout; cycle cards use top-center badges.
 - Arrows: thick blue arrows for primary direction; thin dotted arrows for mapping or feedback.
 - Conclusion band: full-width saturated blue bar near the bottom with a shield/target/rocket icon and one strong takeaway.
 - Mini-metric row: 3-5 compact boxes under a conclusion band when the card needs measurable outputs.
 - Structural marks: timelines, arrows, ladders, matrices, swimlanes, funnels, loops, brackets, axes, and connectors.
 - Premium hierarchy components: left gradient upgrade rail, four semantic layer modules, right tier panel with callout and emphasized top tier, curved connectors, icon-led mechanism chain, summary card row.
-- Premium transformation components: three tall zones, emphasized middle mechanism, vertical relation labels, essence pills, bottom metric row.
+- Premium transformation components: three tall zones, emphasized middle mechanism, compact relation labels, essence pills, bottom metric row.
 
 Cards are local containers. They are not the default composition. Every image needs a primary diagram structure that makes the logic visible before the reader finishes reading the text.
 
@@ -63,12 +63,13 @@ Cards are local containers. They are not the default composition. Every image ne
 
 ### Premium Hierarchy Diffusion
 
-Use when a single image must explain hierarchy, maturity, demand levels, capability stacks, or "high brings low" logic.
+Use when a single image must explain hierarchy, maturity stages, capability stacks, layered signals, or diffusion logic.
 
 - 3:4 canvas at `1086x1448`.
 - Left gradient rail must name the upward axis.
 - Middle stack must have exactly four semantic layers.
 - Right side must have exactly three related tiers.
+- Every layer and tier needs a content-specific visual anchor. Use one semantic icon per motif and vary the geometric background; do not repeat a generic user, trophy, network, target, or triangle symbol across unrelated concepts.
 - Add a short `tier_callout` when the right side needs a benchmark-like "why this tier matters" emphasis.
 - Bottom must include three mechanisms, 2-3 summary cards, and a conclusion band.
 
@@ -78,8 +79,9 @@ Use for a reference-grade loop or flywheel.
 
 - Top flow strip with 3-5 icon labels.
 - Large center circle with a short mechanism phrase.
-- Double-ring path with 5-6 nodes attached to the loop.
-- Inner phase chips around the center for naming, validating, compressing, or writing back.
+- Segmented circular arrows with 5-6 nodes attached to the loop.
+- Keep the center clean: one core phrase plus at most two short support lines.
+- Step number badges sit centered on each loop card's top edge.
 - Bottom output row and conclusion band.
 
 ### Premium Transformation Logic
@@ -112,11 +114,11 @@ Use for role split, responsibility split, or three operating layers.
 
 ### Layer Stack
 
-Use for maturity, user tiers, demand levels, or capability levels.
+Use for maturity stages, related tiers, layered signals, or capability levels.
 
 - Vertical ladder on one side with increasing intensity.
 - Each layer has number badge, icon, title, bullets, and a short "essence" strip.
-- Use arrows from layers to corresponding audience tiers when useful.
+- Use arrows from layers to corresponding tiers, roles, or outcomes when useful.
 
 ### Cycle/Flywheel
 
@@ -146,7 +148,7 @@ Use for agendas, version sequences, incident histories, and delivery plans.
 
 ### Premium Process Flow
 
-Use for product journeys or AI workflows where the reader must see what the user does, what the system does, and how the output arrives.
+Use for product journeys or AI workflows where the reader must see what the actor does, what the system does, and how the output arrives.
 
 - Keep the top spine to exactly four main stages.
 - Arrows should sit between stage cards and point to real next actions.

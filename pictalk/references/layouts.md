@@ -38,7 +38,7 @@ Optional shared fields:
 - `conclusion_style`: `blue`, `green`, `purple`, or `orange`.
 - `center_text`: only for `cycle`.
 - `outputs_title`: heading above metric/output row.
-- `side_sections`: only for `layer-stack` with right-side user levels.
+- `side_sections`: only for `layer-stack` with right-side related levels.
 
 All visible strings in these fields must appear exactly in `text_ledger`.
 
@@ -56,14 +56,16 @@ Every premium card needs:
 
 ### PTP01 Premium Hierarchy Diffusion
 
-Use for hierarchy, demand levels, maturity ladders, capability stacks, "high brings low" logic, or a layered article argument.
+Use for hierarchy, maturity ladders, capability stacks, layered signals, structural diffusion, or a layered article argument.
 
 Required:
 
 - `layout_type`: `premium-hierarchy-diffusion`
 - `axis.label`: the upward meaning of the hierarchy
-- `layers`: exactly 4 objects, each with `no`, `title`, `type`, `icon`, `tone`, `typical_behavior`, `core_blocker`, `matched_audience`, `essence`
-- `user_tiers`: exactly 3 objects, each with `id`, `label`, `headline`, `body`, `tone`
+- `layers`: exactly 4 objects, each with `no`, `title`, `type`, content-specific `icon`, `tone`, `typical_behavior`, `core_blocker`, `matched_audience`, `essence`
+- `tiers`: exactly 3 objects, each with `id`, `label`, `headline`, `body`, `tone`, and a content-specific `icon`
+- optional `visual_style`: `single`, `stack`, `constellation`, `shield`, `bridge`, or `pyramid`; this changes the geometric background only
+- optional `motif_icons`: 1-3 primary-icon candidates; the renderer uses one semantic icon and must not overlap multiple SVG icons inside one motif
 - optional `tier_callout`: `{ "text": "...", "icon": "trophy", "tone": "orange" }` for a right-panel emphasis box
 - `connectors`: at least 3 relations using `from_layer` and `to_tier`
 - `mechanisms`: exactly 3 mechanism cards; add `icon` when possible
@@ -80,6 +82,10 @@ Best visual shape:
 - curved layer-to-tier connectors;
 - icon-led bottom mechanism chain, summary cards, and conclusion band.
 
+Guardrail:
+
+- Do not hard-code the same tier graphic across topics. Use distinct `icon` values and `visual_style` to make the visual anchor match the article concept. Avoid repeated generic icons such as `network`, `target`, and `layers` when the article suggests more specific symbols.
+
 ### PTP02 Premium Cycle System
 
 Use for operating loops, feedback loops, learning loops, flywheels, and "one mechanism keeps producing outputs."
@@ -89,7 +95,6 @@ Required:
 - `layout_type`: `premium-cycle-system`
 - `center.main` and `center.lines`
 - `top_flow`: 3-5 compact items
-- optional `cycle_phases`: 3-5 labels for the inner ring; omit only when `top_flow` can double as path labels
 - `loop_nodes`: 5-6 nodes, each with `no`, `title`, `subtitle`, `icon`, `tone`
 - `outputs`: 3-5 output cards
 - `conclusion`
@@ -97,10 +102,14 @@ Required:
 Best visual shape:
 
 - top logic strip;
-- central circular thesis with inner phase chips;
-- surrounding loop nodes attached to a visible double ring;
+- clean central circular thesis;
+- surrounding loop nodes attached to segmented circular arrows;
 - directional curved arrows that read as a feedback path;
 - output row and conclusion band.
+
+Guardrail:
+
+- Step badges sit centered on the top edge of every loop card. Do not move some badges to the left or right side by slot.
 
 ### PTP03 Premium Transformation Logic
 
@@ -126,14 +135,14 @@ Best visual shape:
 
 ### PTP04 Premium Process Flow
 
-Use for user journeys, product operation flows, AI pipelines, or any process where a four-step path must end in a visible output stream.
+Use for operation flows, product workflows, AI pipelines, or any process where a four-step path must end in a visible output stream.
 
 Required:
 
 - `layout_type`: `premium-process-flow`
 - `stages`: exactly 4 stage cards, each with `no`, `title`, `subtitle`, `icon`, `tone`, and `body`
 - `stream`: one output band with `title`, `subtitle`, `icon`, `tone`, and 2-5 `items`
-- `checkpoints`: 2-3 cards for quality gates, user-visible assurances, or system guarantees
+- `checkpoints`: 2-3 cards for quality gates, reader-visible assurances, or system guarantees
 - `conclusion`
 
 Best visual shape:
@@ -188,7 +197,7 @@ Avoid:
 
 ## PT02 Layer Stack
 
-Use for hierarchy, maturity ladder, demand levels, user tiers, capability levels, or "high brings low" diffusion logic.
+Use for hierarchy, maturity ladders, layered signals, related tiers, capability levels, or diffusion logic.
 
 Required:
 
@@ -203,13 +212,13 @@ Best visual shape:
 
 - left vertical upgrade arrow;
 - stacked layer cards with numbered badges;
-- optional right user levels;
+- optional right related tiers;
 - bottom mechanisms and conclusion band.
 
 Good for:
 
-- "需求层次逐级升级";
-- "高职级带动低职级";
+- "从基础信号到系统能力";
+- "从局部经验到可复用结构";
 - "从基础层到带动层".
 
 Avoid:
@@ -290,7 +299,7 @@ Avoid:
 
 ## PT06 Matrix
 
-Use when rows and columns are both meaningful: categories crossed with user type, evidence status, owner, priority, or decision direction.
+Use when rows and columns are both meaningful: categories crossed with segment type, evidence status, owner, priority, or decision direction.
 
 Required:
 

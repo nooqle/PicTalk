@@ -1,0 +1,421 @@
+{
+  "project": {
+    "title": "藏传佛教艺术脉络：佛母",
+    "source_language": "zh-CN",
+    "output_language": "zh-CN",
+    "audience": "文章配图与演讲汇报",
+    "aspect_ratio": "3:4",
+    "card_count_rationale": "文章围绕佛母概念和四类典型图像展开，两张图分别解释概念展开和识别框架。",
+    "allow_visible_pictalk_brand": false
+  },
+  "palette": {
+    "title_navy": "#071B49",
+    "primary_blue": "#0757D8",
+    "green": "#128348",
+    "orange": "#E77800",
+    "purple": "#5A2BAE",
+    "background": "#FFFFFF"
+  },
+  "source_notes": [
+    {
+      "id": "S1",
+      "quote_or_summary": "佛诞于般若，智慧生出觉悟；佛母更像一种哲学关系。",
+      "location": "开篇概念解释"
+    },
+    {
+      "id": "S2",
+      "quote_or_summary": "般若佛母是《般若经》的显相，代表空性本身，也出现在写经页和经板封面上。",
+      "location": "般若佛母段落"
+    },
+    {
+      "id": "S3",
+      "quote_or_summary": "一髻佛母以一髻、一目、一齿、一乳等特征表现智慧的锋利和护法力量。",
+      "location": "一髻佛母段落"
+    },
+    {
+      "id": "S4",
+      "quote_or_summary": "尊胜佛母由经典、陀罗尼、延寿与净障共同撑起修法系统。",
+      "location": "尊胜佛母段落"
+    },
+    {
+      "id": "S5",
+      "quote_or_summary": "大白伞盖佛母以白伞、千头千手或三面六臂等形象展开防护和广覆。",
+      "location": "大白伞盖佛母段落"
+    }
+  ],
+  "cards": [
+    {
+      "id": "buddhist-mother-01",
+      "title": "佛母如何从概念长成图像",
+      "subtitle": "智慧、空性、神咒与护持的四条艺术线索",
+      "layout_type": "premium-hierarchy-diffusion",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "dense",
+      "primary_pattern": "hierarchy-diffusion",
+      "supporting_patterns": ["layer-map", "image-recognition", "mechanism-chain", "conclusion-band"],
+      "thesis": "佛母题材把抽象的智慧、神咒和护持关系，转化成可观看、可塑造、可识别的女性本尊图像。",
+      "composition": {
+        "dominant_structure": "左侧上升轴，中间四类佛母层级，右侧三层阅读方式，底部收束为艺术识别线索。",
+        "not_card_grid": true,
+        "visible_marks": ["上升轴", "四层模块", "三层阅读方式", "连接线", "机制链", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "axis": {
+        "label": "从智慧根源到护持空间",
+        "direction": "up"
+      },
+      "field_labels": {
+        "typical_behavior": "图像线索",
+        "core_blocker": "识别难点",
+        "matched_audience": "适合读者"
+      },
+      "essence_label": "图像本质",
+      "tiers_title": "阅读层级",
+      "layers": [
+        {
+          "id": "prajna",
+          "no": "1",
+          "title": "般若佛母",
+          "type": "根本智慧层",
+          "icon": "book-open",
+          "visual_style": "constellation",
+          "motif_icons": ["book-open", "spark", "users"],
+          "tone": "blue",
+          "typical_behavior": "空性、经文与女性本尊合为中心形象",
+          "core_blocker": "容易把称号理解成血缘关系",
+          "matched_audience": "初识佛母概念的读者",
+          "essence": "智慧根源",
+          "source_ids": ["S1", "S2"]
+        },
+        {
+          "id": "ekajati",
+          "no": "2",
+          "title": "一髻佛母",
+          "type": "忿怒护法层",
+          "icon": "spark",
+          "visual_style": "shield",
+          "motif_icons": ["spark", "target"],
+          "tone": "orange",
+          "typical_behavior": "一髻、一目、一齿、一乳形成强烈辨识点",
+          "core_blocker": "怪异身相容易脱离智慧主线",
+          "matched_audience": "理解护法与忿怒相的人",
+          "essence": "锋利能量",
+          "source_ids": ["S3"]
+        },
+        {
+          "id": "usnisa",
+          "no": "3",
+          "title": "尊胜佛母",
+          "type": "陀罗尼修法层",
+          "icon": "layers",
+          "visual_style": "stack",
+          "motif_icons": ["layers", "target", "check"],
+          "tone": "green",
+          "typical_behavior": "白身三面八臂，法器、宝瓶和功德层层叠加",
+          "core_blocker": "法器众多，关系容易散开",
+          "matched_audience": "对照经典仪轨和造像的人",
+          "essence": "寿命净障",
+          "source_ids": ["S4"]
+        },
+        {
+          "id": "sitatapatra",
+          "no": "4",
+          "title": "大白伞盖佛母",
+          "type": "防护坛场层",
+          "icon": "network",
+          "visual_style": "shield",
+          "motif_icons": ["network", "trophy"],
+          "tone": "purple",
+          "typical_behavior": "白伞、千头千手或三面六臂展开护持场",
+          "core_blocker": "多种化身和观想层级容易混淆",
+          "matched_audience": "比较经咒、唐卡和造像的人",
+          "essence": "护持空间",
+          "source_ids": ["S5"]
+        }
+      ],
+      "tiers": [
+        {
+          "id": "A",
+          "label": "A 概念层",
+          "headline": "从般若和空性理解佛母来源",
+          "body": ["智慧生出觉悟", "经文显相", "哲学关系"],
+          "icon": "book-open",
+          "visual_style": "constellation",
+          "motif_icons": ["book-open", "spark"],
+          "tone": "blue"
+        },
+        {
+          "id": "B",
+          "label": "B 图像层",
+          "headline": "用身相、手印、法器识别本尊类型",
+          "body": ["身色", "面臂数量", "持物法器"],
+          "icon": "target",
+          "visual_style": "bridge",
+          "motif_icons": ["users", "target"],
+          "tone": "green"
+        },
+        {
+          "id": "C",
+          "label": "C 脉络层",
+          "headline": "把根、枝、护法和防护场连成谱系",
+          "body": ["般若为根", "一髻成力", "尊胜与白伞展开系统"],
+          "icon": "network",
+          "visual_style": "constellation",
+          "motif_icons": ["network", "layers", "trophy"],
+          "tone": "orange"
+        }
+      ],
+      "tier_callout": {
+        "text": "抽象力量借女性身体变成可观看图像",
+        "icon": "trophy",
+        "tone": "orange"
+      },
+      "connectors": [
+        { "from_layer": "1", "to_tier": "A", "tone": "blue", "kind": "curved-arrow" },
+        { "from_layer": "2", "to_tier": "B", "tone": "orange", "kind": "curved-arrow" },
+        { "from_layer": "3", "to_tier": "C", "tone": "green", "kind": "curved-arrow" },
+        { "from_layer": "4", "to_tier": "C", "tone": "purple", "kind": "curved-arrow" }
+      ],
+      "mechanisms_title": "三条阅读线索",
+      "mechanisms": [
+        {
+          "no": "1",
+          "title": "看概念",
+          "body": "先分清般若、空性与觉悟的关系",
+          "icon": "book-open",
+          "tone": "blue"
+        },
+        {
+          "no": "2",
+          "title": "看形象",
+          "body": "再看身色、面臂、手印和持物",
+          "icon": "target",
+          "tone": "green"
+        },
+        {
+          "no": "3",
+          "title": "看系统",
+          "body": "最后连接经典、陀罗尼和崇拜传统",
+          "icon": "layers",
+          "tone": "purple"
+        }
+      ],
+      "summary_title": "图像判断",
+      "summary_cards": [
+        {
+          "title": "佛母是一套视觉化方法",
+          "body": "智慧、空性、神咒和护持被组织成可观看的图像。",
+          "icon": "network",
+          "tone": "blue"
+        },
+        {
+          "title": "女性本尊承载抽象力量",
+          "body": "身体、面容和法器让哲学关系进入艺术史线索。",
+          "icon": "spark",
+          "tone": "green"
+        }
+      ],
+      "conclusion": "核心结论：佛母艺术把智慧根源、护法能量、修法系统和防护空间连成一条可见脉络。",
+      "conclusion_style": "blue",
+      "conclusion_icon": "network",
+      "text_ledger": [
+        "佛母如何从概念长成图像",
+        "智慧、空性、神咒与护持的四条艺术线索",
+        "从智慧根源到护持空间",
+        "阅读层级",
+        "图像线索",
+        "识别难点",
+        "适合读者",
+        "图像本质",
+        "1",
+        "般若佛母",
+        "根本智慧层",
+        "空性、经文与女性本尊合为中心形象",
+        "容易把称号理解成血缘关系",
+        "初识佛母概念的读者",
+        "智慧根源",
+        "2",
+        "一髻佛母",
+        "忿怒护法层",
+        "一髻、一目、一齿、一乳形成强烈辨识点",
+        "怪异身相容易脱离智慧主线",
+        "理解护法与忿怒相的人",
+        "锋利能量",
+        "3",
+        "尊胜佛母",
+        "陀罗尼修法层",
+        "白身三面八臂，法器、宝瓶和功德层层叠加",
+        "法器众多，关系容易散开",
+        "对照经典仪轨和造像的人",
+        "寿命净障",
+        "4",
+        "大白伞盖佛母",
+        "防护坛场层",
+        "白伞、千头千手或三面六臂展开护持场",
+        "多种化身和观想层级容易混淆",
+        "比较经咒、唐卡和造像的人",
+        "护持空间",
+        "A 概念层",
+        "从般若和空性理解佛母来源",
+        "智慧生出觉悟",
+        "经文显相",
+        "哲学关系",
+        "B 图像层",
+        "用身相、手印、法器识别本尊类型",
+        "身色",
+        "面臂数量",
+        "持物法器",
+        "C 脉络层",
+        "把根、枝、护法和防护场连成谱系",
+        "般若为根",
+        "一髻成力",
+        "尊胜与白伞展开系统",
+        "抽象力量借女性身体变成可观看图像",
+        "三条阅读线索",
+        "看概念",
+        "先分清般若、空性与觉悟的关系",
+        "看形象",
+        "再看身色、面臂、手印和持物",
+        "看系统",
+        "最后连接经典、陀罗尼和崇拜传统",
+        "图像判断",
+        "佛母是一套视觉化方法",
+        "智慧、空性、神咒和护持被组织成可观看的图像。",
+        "女性本尊承载抽象力量",
+        "身体、面容和法器让哲学关系进入艺术史线索。",
+        "核心结论：佛母艺术把智慧根源、护法能量、修法系统和防护空间连成一条可见脉络。"
+      ]
+    },
+    {
+      "id": "buddhist-mother-02",
+      "title": "四类佛母的识别框架",
+      "subtitle": "从称号误读到看懂图像、法器和修法系统",
+      "layout_type": "premium-transformation-logic",
+      "layout_family": "premium",
+      "quality_target": "reference-grade",
+      "density": "medium",
+      "primary_pattern": "transformation-logic",
+      "supporting_patterns": ["three-zone", "relation-arrow", "metric-row", "conclusion-band"],
+      "thesis": "识别佛母图像时，先看概念根源，再看身相法器，最后连接经典和修法传统。",
+      "composition": {
+        "dominant_structure": "三段式识别框架，从称号混乱进入三层读法，再形成可复用的艺术脉络。",
+        "not_card_grid": true,
+        "visible_marks": ["三段分区", "中间高亮", "关系箭头", "指标行", "结论带"]
+      },
+      "canvas": {
+        "width": 1086,
+        "height": 1448
+      },
+      "zones": [
+        {
+          "id": "confusion",
+          "label": "初看状态",
+          "title": "名字混乱",
+          "icon": "folder",
+          "tone": "gray",
+          "insight": "初见时只看见一串称号，难以判断彼此关系。",
+          "bullets": [
+            "般若、尊胜、白伞盖都叫佛母",
+            "一髻形象猛烈，容易脱离智慧主线",
+            "法器、手印和颜色信息分散"
+          ],
+          "essence": "初见混乱"
+        },
+        {
+          "id": "method",
+          "label": "中间方法",
+          "title": "三层读法",
+          "icon": "target",
+          "tone": "blue",
+          "emphasis": true,
+          "insight": "先看哲学根源，再看形象特征，最后看仪轨系统。",
+          "bullets": [
+            "根源：般若与空性",
+            "形象：身体、手印、持物",
+            "系统：经典、陀罗尼、护持"
+          ],
+          "essence": "识别路径"
+        },
+        {
+          "id": "lineage",
+          "label": "识别结果",
+          "title": "艺术脉络",
+          "icon": "network",
+          "tone": "green",
+          "insight": "不同佛母承担不同的智慧表达方式。",
+          "bullets": [
+            "般若佛母提供中心和根",
+            "一髻佛母把智慧转为护法力量",
+            "尊胜与白伞盖展开寿命、净障、防护"
+          ],
+          "essence": "可见谱系"
+        }
+      ],
+      "relations": [
+        { "from": "confusion", "to": "method", "label": "从称号进入概念", "tone": "blue" },
+        { "from": "method", "to": "lineage", "label": "从特征连成脉络", "tone": "green" }
+      ],
+      "metrics": [
+        { "label": "根", "value": "般若与空性", "color": "#0757D8" },
+        { "label": "力", "value": "一髻与护法", "color": "#E77800" },
+        { "label": "场", "value": "尊胜与白伞盖", "color": "#128348" }
+      ],
+      "conversion_artifact": {
+        "title": "佛母图像速读卡",
+        "subtitle": "用概念、身相、法器和修法传统四项快速定位佛母类型。",
+        "items": ["概念根源", "身体特征", "持物法器", "仪轨系统"],
+        "icon": "layers",
+        "tone": "green"
+      },
+      "conclusion": "核心结论：佛母题材把智慧、神咒和护持转化成可观看的艺术谱系。",
+      "conclusion_style": "purple",
+      "conclusion_icon": "spark",
+      "text_ledger": [
+        "四类佛母的识别框架",
+        "从称号误读到看懂图像、法器和修法系统",
+        "核心转化判断",
+        "识别佛母图像时，先看概念根源，再看身相法器，最后连接经典和修法传统。",
+        "初看状态",
+        "名字混乱",
+        "初见时只看见一串称号，难以判断彼此关系。",
+        "般若、尊胜、白伞盖都叫佛母",
+        "一髻形象猛烈，容易脱离智慧主线",
+        "法器、手印和颜色信息分散",
+        "初见混乱",
+        "中间方法",
+        "三层读法",
+        "先看哲学根源，再看形象特征，最后看仪轨系统。",
+        "根源：般若与空性",
+        "形象：身体、手印、持物",
+        "系统：经典、陀罗尼、护持",
+        "识别路径",
+        "识别结果",
+        "艺术脉络",
+        "不同佛母承担不同的智慧表达方式。",
+        "般若佛母提供中心和根",
+        "一髻佛母把智慧转为护法力量",
+        "尊胜与白伞盖展开寿命、净障、防护",
+        "可见谱系",
+        "从称号进入概念",
+        "从特征连成脉络",
+        "根",
+        "般若与空性",
+        "力",
+        "一髻与护法",
+        "场",
+        "尊胜与白伞盖",
+        "佛母图像速读卡",
+        "用概念、身相、法器和修法传统四项快速定位佛母类型。",
+        "概念根源",
+        "身体特征",
+        "持物法器",
+        "仪轨系统",
+        "核心结论：佛母题材把智慧、神咒和护持转化成可观看的艺术谱系。"
+      ]
+    }
+  ]
+}

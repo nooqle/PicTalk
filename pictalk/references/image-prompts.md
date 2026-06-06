@@ -44,13 +44,13 @@ Choose one renderer-supported layout from `references/layouts.md`.
 #### Premium Hierarchy Diffusion
 
 ```text
-Layout: vertical 3:4 reference-grade Chinese business infographic. Large centered navy title and subtitle. Left side has a tall upward gradient blue arrow with the hierarchy axis label. Middle area has exactly four dense stacked layer modules; each layer has a numbered badge, icon block, title, type pill, three compact fact rows for typical behavior / core blocker / matched audience, and a blue essence pill. Right side has exactly three audience tier cards. Curved arrows connect the layer stack to the tier cards. Bottom area has a three-card mechanism chain, two summary cards, and a saturated conclusion band.
+Layout: vertical 3:4 reference-grade Chinese business infographic. Large centered navy title and subtitle. Left side has a tall upward gradient blue arrow with the hierarchy axis label. Middle area has exactly four dense stacked layer modules; each layer has a numbered badge, content-specific visual motif, title, type pill, three compact fact rows, and a blue essence pill. Right side has exactly three related tier cards, each with its own article-specific visual motif. Curved arrows connect the layer stack to the tier cards. Bottom area has a three-card mechanism chain, two summary cards, and a saturated conclusion band.
 ```
 
 #### Premium Cycle System
 
 ```text
-Layout: vertical 3:4 reference-grade loop infographic. Top compact process strip with three to five icon labels. Center has a large blue circular mechanism statement. Five to six numbered loop nodes surround the circle with curved arrows. Bottom has three to five output cards and a saturated conclusion band. The image should read as a system loop, not a card grid.
+Layout: vertical 3:4 reference-grade loop infographic. Top compact process strip with three to five icon labels. Center has a large blue circular mechanism statement. Five to six loop cards surround the circle with top-centered number badges, left visual anchor, title, and short support text. Curved arrows must follow one consistent circular path. Bottom has three to five output cards and a saturated conclusion band. The image should read as a system loop, not a card grid.
 ```
 
 #### Premium Transformation Logic
@@ -68,7 +68,7 @@ Layout: vertical 3:4 infographic. Large centered blue circle with the core thesi
 #### Layer Stack
 
 ```text
-Layout: vertical 3:4 hierarchy infographic. Left side has a tall upward blue arrow naming the upgrade direction. Middle area has three to five stacked layer cards from low to high, each with a numbered badge, icon, heading, bullets, and a blue essence pill. Right side has two or three user/audience tier cards connected back to the layers. Bottom row explains diffusion or output mechanisms, followed by a saturated conclusion band.
+Layout: vertical 3:4 hierarchy infographic. Left side has a tall upward blue arrow naming the upgrade direction. Middle area has three to five stacked layer cards from low to high, each with a numbered badge, content-specific visual anchor, heading, bullets, and a blue essence pill. Right side has two or three related tier cards connected back to the layers. Bottom row explains diffusion or output mechanisms, followed by a saturated conclusion band.
 ```
 
 #### Transformation

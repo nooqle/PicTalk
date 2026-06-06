@@ -98,10 +98,52 @@ def qa_html(path: Path) -> list[str]:
               const text = (sel) => Array.from(document.querySelectorAll(sel)).map((el) => (el.innerText || el.textContent || '').trim()).filter(Boolean);
               if (document.querySelector('.premium-cycle')) {
                 if (document.querySelectorAll('.premium-loop-node').length < 5) errors.push('premium-cycle requires at least 5 loop nodes');
-                if (document.querySelectorAll('.cycle-phase-chip').length < 4) errors.push('premium-cycle requires at least 4 phase chips around the center');
+                if (document.querySelectorAll('.premium-loop-node .loop-no').length < 5) errors.push('premium-cycle requires visible step badges on loop nodes');
                 if (document.querySelectorAll('.premium-output').length < 3) errors.push('premium-cycle requires at least 3 output cards');
-                if (document.querySelectorAll('.premium-cycle-arrows path').length < 4) errors.push('premium-cycle requires directional arc paths');
+                if (document.querySelectorAll('.premium-cycle-arrows > path').length < 6) errors.push('premium-cycle requires six directional arc paths');
+                if (!Array.from(document.querySelectorAll('.premium-cycle-arrows > path')).every((path) => (path.getAttribute('d') || '').includes(' A'))) errors.push('premium-cycle arrow paths must use SVG circular arcs');
+                Array.from(document.querySelectorAll('.premium-loop-node')).forEach((node, index) => {
+                  const badge = node.querySelector('.loop-no');
+                  if (!badge) return;
+                  const nr = node.getBoundingClientRect();
+                  const br = badge.getBoundingClientRect();
+                  if (Math.abs((br.left + br.width / 2) - (nr.left + nr.width / 2)) > 2) {
+                    errors.push(`premium-cycle step badge ${index + 1} must be centered on its card top edge`);
+                  }
+                });
+                if (document.querySelectorAll('.cycle-phase-chip').length > 0) errors.push('premium-cycle center should stay clean without extra center labels');
               }
+              if (document.querySelector('.premium-hierarchy')) {
+                const layerMotifs = Array.from(document.querySelectorAll('.benchmark-layer .visual-motif'));
+                const layerIcons = layerMotifs.map((motif) => motif.getAttribute('data-motif-icon')).filter(Boolean);
+                if (layerIcons.length && new Set(layerIcons).size !== layerIcons.length) {
+                  errors.push('premium-hierarchy layer motifs should use distinct semantic icons');
+                }
+                const tierMotifs = Array.from(document.querySelectorAll('.benchmark-tier .visual-motif'));
+                const tierIcons = tierMotifs.map((motif) => motif.getAttribute('data-motif-icon')).filter(Boolean);
+                if (tierIcons.length && new Set(tierIcons).size !== tierIcons.length) {
+                  errors.push('premium-hierarchy tier motifs should use distinct semantic icons');
+                }
+                Array.from(document.querySelectorAll('.benchmark-tier')).forEach((tier, index) => {
+                  const motif = tier.querySelector('.tier-motif-wrap');
+                  const copy = tier.querySelector('.tier-copy');
+                  if (!motif || !copy) return;
+                  const mr = motif.getBoundingClientRect();
+                  const cr = copy.getBoundingClientRect();
+                  if (mr.right > cr.left - 2) {
+                    errors.push(`premium-hierarchy tier motif ${index + 1} must not overlap the text column`);
+                  }
+                });
+              }
+              Array.from(document.querySelectorAll('.visual-motif')).forEach((motif, index) => {
+                const svgCount = motif.querySelectorAll('svg').length;
+                if (svgCount !== 1) {
+                  errors.push(`visual motif ${index + 1} must contain exactly one semantic SVG icon, found ${svgCount}`);
+                }
+                if (motif.querySelector('.motif-node,.motif-shield-mark,.motif-pyramid-top,.motif-pyramid-base')) {
+                  errors.push(`visual motif ${index + 1} uses legacy overlapped icon structure`);
+                }
+              });
               if (document.querySelector('.premium-transformation')) {
                 if (document.querySelectorAll('.premium-zone').length !== 3) errors.push('premium-transformation requires exactly 3 zones');
                 if (text('.zone-insight').length !== 3) errors.push('premium-transformation requires one insight sentence per zone');

@@ -38,10 +38,11 @@ LAYOUT_SECTION_LIMITS = {
 }
 
 ALLOWED_TONES = {"blue", "green", "orange", "purple", "gray"}
+ALLOWED_VISUAL_STYLES = {"single", "stack", "constellation", "shield", "bridge", "pyramid"}
 DEFAULT_HIERARCHY_LABELS = {
-    "typical_behavior": "典型行为",
-    "core_blocker": "核心卡点",
-    "matched_audience": "匹配人群",
+    "typical_behavior": "表现线索",
+    "core_blocker": "关键阻碍",
+    "matched_audience": "适配场景",
 }
 
 
@@ -88,6 +89,13 @@ def common_rendered_strings(card: dict[str, Any]) -> list[str]:
         if isinstance(value, str) and value.strip():
             strings.append(value.strip())
 
+    axis = card.get("axis")
+    if isinstance(axis, dict):
+        strings.extend(collect_strings({"label": axis.get("label")}))
+    axis_label = card.get("axis_label")
+    if isinstance(axis_label, str) and axis_label.strip():
+        strings.append(axis_label.strip())
+
     for item in card.get("top_flow") or []:
         strings.extend(collect_strings({"label": item.get("label")}))
 
@@ -117,6 +125,10 @@ def generic_rendered_strings(card: dict[str, Any]) -> list[str]:
             "body": section.get("body"),
         }))
 
+    if card.get("layout_type") == "layer-stack" and card.get("side_sections"):
+        axis = card.get("axis") if isinstance(card.get("axis"), dict) else {}
+        strings.append(card.get("axis_label") or axis.get("label") or "层级逐级升级")
+
     matrix = card.get("matrix")
     if isinstance(matrix, dict):
         strings.extend(collect_strings(matrix.get("columns")))
@@ -137,8 +149,8 @@ def premium_rendered_strings(card: dict[str, Any]) -> list[str]:
         labels = DEFAULT_HIERARCHY_LABELS.copy()
         labels.update(card.get("field_labels") or {})
         strings.extend(labels.values())
-        strings.append(card.get("essence_label", "需求本质"))
-        strings.append(card.get("tiers_title", "用户层级"))
+        strings.append(card.get("essence_label", "结构本质"))
+        strings.append(card.get("tiers_title", "关联层级"))
         strings.append(card.get("mechanisms_title", "扩散机制"))
         strings.append(card.get("summary_title", "结构判断"))
         strings.extend(collect_strings({"axis": (card.get("axis") or {}).get("label")}))
@@ -157,7 +169,7 @@ def premium_rendered_strings(card: dict[str, Any]) -> list[str]:
                 "essence": layer.get("essence"),
             }))
 
-        for tier in card.get("user_tiers") or []:
+        for tier in card.get("tiers") or card.get("user_tiers") or []:
             strings.extend(collect_strings({
                 "label": tier.get("label"),
                 "headline": tier.get("headline"),
@@ -184,8 +196,6 @@ def premium_rendered_strings(card: dict[str, Any]) -> list[str]:
             "lines": center.get("lines"),
         }))
         strings.append(card.get("outputs_title", "关键产出"))
-        for phase in card.get("cycle_phases") or []:
-            strings.extend(collect_strings({"label": phase.get("label") if isinstance(phase, dict) else None}))
 
         for node in card.get("loop_nodes") or []:
             strings.extend(collect_strings({
@@ -323,6 +333,20 @@ def require_tone(value: Any, path: str, errors: list[str]) -> None:
     require(value in ALLOWED_TONES, f"{path} must be one of {sorted(ALLOWED_TONES)}", errors)
 
 
+def validate_visual_fields(item: dict[str, Any], path: str, errors: list[str], *, require_icon: bool = False) -> None:
+    if require_icon:
+        require(is_nonempty_string(item.get("icon")), f"{path}.icon is required for content-specific visual anchoring", errors)
+    visual_style = item.get("visual_style")
+    if visual_style is not None:
+        require(visual_style in ALLOWED_VISUAL_STYLES, f"{path}.visual_style must be one of {sorted(ALLOWED_VISUAL_STYLES)}", errors)
+    motif_icons = item.get("motif_icons")
+    if motif_icons is not None:
+        require(isinstance(motif_icons, list) and 1 <= len(motif_icons) <= 3, f"{path}.motif_icons must contain 1-3 icon names", errors)
+        if isinstance(motif_icons, list):
+            for i, motif_icon in enumerate(motif_icons, start=1):
+                require(is_nonempty_string(motif_icon), f"{path}.motif_icons[{i}] must be a non-empty string", errors)
+
+
 def validate_premium_canvas(card: dict[str, Any], prefix: str, errors: list[str]) -> None:
     canvas = card.get("canvas")
     if isinstance(canvas, dict) and not card.get("allow_custom_canvas"):
@@ -343,6 +367,7 @@ def validate_hierarchy(card: dict[str, Any], prefix: str, errors: list[str]) -> 
     layers = card.get("layers")
     require(isinstance(layers, list) and len(layers) == 4, f"{prefix}.layers must contain exactly 4 layers", errors)
     layer_keys: set[str] = set()
+    layer_icons: list[str] = []
     if isinstance(layers, list):
         for i, layer in enumerate(layers, start=1):
             layer_prefix = f"{prefix}.layers[{i}]"
@@ -352,29 +377,41 @@ def validate_hierarchy(card: dict[str, Any], prefix: str, errors: list[str]) -> 
             for key in ["no", "title", "type", "icon", "tone", "typical_behavior", "core_blocker", "matched_audience", "essence"]:
                 require(is_nonempty_string(layer.get(key)), f"{layer_prefix}.{key} is required", errors)
             require_tone(layer.get("tone"), f"{layer_prefix}.tone", errors)
+            validate_visual_fields(layer, layer_prefix, errors, require_icon=True)
+            if is_nonempty_string(layer.get("icon")):
+                layer_icons.append(str(layer.get("icon")))
             if is_nonempty_string(layer.get("essence")):
                 require(len(layer["essence"]) <= 24, f"{layer_prefix}.essence should be 24 characters or fewer", errors)
             for key in [layer.get("id"), layer.get("no"), layer.get("title")]:
                 if key is not None:
                     layer_keys.add(str(key))
+    if card.get("quality_target") == "reference-grade" and layer_icons:
+        require(len(set(layer_icons)) == len(layer_icons), f"{prefix}.layers icons must be distinct for reference-grade hierarchy cards", errors)
 
-    tiers = card.get("user_tiers")
-    require(isinstance(tiers, list) and len(tiers) == 3, f"{prefix}.user_tiers must contain exactly 3 tiers", errors)
+    tiers = card.get("tiers") if "tiers" in card else card.get("user_tiers")
+    tier_field = "tiers" if "tiers" in card else "user_tiers"
+    require(isinstance(tiers, list) and len(tiers) == 3, f"{prefix}.tiers must contain exactly 3 tiers", errors)
     tier_keys: set[str] = set()
+    tier_icons: list[str] = []
     if isinstance(tiers, list):
         for i, tier in enumerate(tiers, start=1):
-            tier_prefix = f"{prefix}.user_tiers[{i}]"
+            tier_prefix = f"{prefix}.{tier_field}[{i}]"
             require(isinstance(tier, dict), f"{tier_prefix} must be an object", errors)
             if not isinstance(tier, dict):
                 continue
             for key in ["id", "label", "headline", "tone"]:
                 require(is_nonempty_string(tier.get(key)), f"{tier_prefix}.{key} is required", errors)
             require_tone(tier.get("tone"), f"{tier_prefix}.tone", errors)
+            validate_visual_fields(tier, tier_prefix, errors, require_icon=card.get("quality_target") == "reference-grade")
+            if is_nonempty_string(tier.get("icon")):
+                tier_icons.append(str(tier.get("icon")))
             require(isinstance(tier.get("body"), list) and bool(tier.get("body")), f"{tier_prefix}.body must be a non-empty list", errors)
             label = str(tier.get("label", ""))
             for key in [tier.get("id"), label, label.split()[0] if label else None]:
                 if key is not None:
                     tier_keys.add(str(key))
+    if card.get("quality_target") == "reference-grade" and tier_icons:
+        require(len(set(tier_icons)) == len(tier_icons), f"{prefix}.tiers icons must be distinct for reference-grade hierarchy cards", errors)
 
     tier_callout = card.get("tier_callout")
     if tier_callout is not None:
@@ -435,18 +472,6 @@ def validate_cycle(card: dict[str, Any], prefix: str, errors: list[str]) -> None
 
     top_flow = card.get("top_flow")
     require(isinstance(top_flow, list) and 3 <= len(top_flow) <= 5, f"{prefix}.top_flow must contain 3-5 items", errors)
-
-    cycle_phases = card.get("cycle_phases")
-    if cycle_phases is not None:
-        require(isinstance(cycle_phases, list) and 3 <= len(cycle_phases) <= 5, f"{prefix}.cycle_phases must contain 3-5 phase labels when provided", errors)
-        if isinstance(cycle_phases, list):
-            for i, phase in enumerate(cycle_phases, start=1):
-                phase_prefix = f"{prefix}.cycle_phases[{i}]"
-                require(isinstance(phase, dict), f"{phase_prefix} must be an object", errors)
-                if isinstance(phase, dict):
-                    require(is_nonempty_string(phase.get("label")), f"{phase_prefix}.label is required", errors)
-                    if phase.get("tone") is not None:
-                        require_tone(phase.get("tone"), f"{phase_prefix}.tone", errors)
 
     nodes = card.get("loop_nodes")
     require(isinstance(nodes, list) and 5 <= len(nodes) <= 6, f"{prefix}.loop_nodes must contain 5-6 nodes", errors)

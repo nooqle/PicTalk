@@ -63,7 +63,7 @@ Good for source lines shaped like "A -> B -> C".
 
 ### 4. Layer Stack
 
-Use for hierarchy, user tiers, capability levels, maturity levels, demand levels, or responsibility depth.
+Use for hierarchy, related tiers, capability levels, maturity stages, layered signals, or responsibility depth.
 
 Visual marks:
 
