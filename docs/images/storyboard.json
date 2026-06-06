@@ -3,7 +3,7 @@
     "title": "从信号到囫囵语：人和 Agent 的共同语言",
     "source_language": "zh-CN",
     "output_language": "zh-CN",
-    "audience": "方法论文章配图与内部演讲",
+    "audience": "方法论文章配图与演讲汇报",
     "aspect_ratio": "3:4",
     "card_count_rationale": "文章有层级升级、循环转译、状态转化三条核心逻辑，适合生成 3 张 premium 信息图。",
     "allow_visible_pictalk_brand": false
@@ -44,7 +44,7 @@
       "density": "dense",
       "primary_pattern": "hierarchy-diffusion",
       "supporting_patterns": ["layer-map", "audience-tier", "mechanism-chain", "conclusion-band"],
-      "thesis": "共同语言不是先设计出来的，而是在感受、命名、验证、写回的层级升级中长出来。",
+      "thesis": "共同语言会在感受、命名、验证、写回的层级升级中逐步形成。",
       "composition": {
         "dominant_structure": "左侧升级箭头，中间四层结构，右侧三类协同成熟度，底部机制链和结论带。",
         "not_card_grid": true,
@@ -173,13 +173,13 @@
       "summary_title": "结构判断",
       "summary_cards": [
         {
-          "title": "囫囵语不是省字",
+          "title": "囫囵语压缩上下文",
           "body": "它是把复杂协同压缩成可共享、可复用的厚结构。",
           "icon": "trophy",
           "tone": "blue"
         },
         {
-          "title": "默会知识不是障碍",
+          "title": "默会知识可以转译",
           "body": "关键部分被转译后，会成为人和 Agent 的公共结构。",
           "icon": "network",
           "tone": "green"
@@ -248,9 +248,9 @@
         "验证写回",
         "把错误样本变成下一轮协同约束",
         "结构判断",
-        "囫囵语不是省字",
+        "囫囵语压缩上下文",
         "它是把复杂协同压缩成可共享、可复用的厚结构。",
-        "默会知识不是障碍",
+        "默会知识可以转译",
         "关键部分被转译后，会成为人和 Agent 的公共结构。",
         "核心结论：共同语言是在边界校准、失败写回和重复调用中逐步长出来的。"
       ]
@@ -265,7 +265,7 @@
       "density": "medium",
       "primary_pattern": "cycle-system",
       "supporting_patterns": ["top-flow", "radial-loop", "output-row", "conclusion-band"],
-      "thesis": "默会知识不会被消灭，而是在协同中被提取、命名、验证、写回，并变成下一轮可调用的方法。",
+      "thesis": "默会知识会在协同中被提取、命名、验证、写回，并变成下一轮可调用的方法。",
       "composition": {
         "dominant_structure": "顶部流程条，中心圆形命题，六个环形节点，底部产出行和结论带。",
         "not_card_grid": true,
@@ -283,7 +283,7 @@
       ],
       "center": {
         "main": "感知经验 → 公共结构",
-        "lines": ["共同语言的生成循环", "不是一次性 SOP"]
+        "lines": ["共同语言的生成循环", "持续校准的协同 SOP"]
       },
       "loop_nodes": [
         {
@@ -333,7 +333,7 @@
       "outputs": [
         {
           "title": "边界词汇",
-          "body": "语言是不是行动，验证是不是完成",
+          "body": "语言、行动、验证、完成各有边界",
           "icon": "book-open",
           "tone": "blue"
         },
@@ -356,7 +356,7 @@
           "tone": "purple"
         }
       ],
-      "conclusion": "核心结论：真正可复用的协同，不是把默会知识清空，而是把关键部分转译成公共结构。",
+      "conclusion": "核心结论：可复用协同来自默会知识的提取、命名、验证和写回。",
       "conclusion_style": "green",
       "conclusion_icon": "network",
       "text_ledger": [
@@ -368,7 +368,7 @@
         "压缩调用",
         "感知经验 → 公共结构",
         "共同语言的生成循环",
-        "不是一次性 SOP",
+        "持续校准的协同 SOP",
         "1",
         "感到不对",
         "边界感先于语言出现",
@@ -389,14 +389,14 @@
         "让短信号召回完整协同方法",
         "循环产出",
         "边界词汇",
-        "语言是不是行动，验证是不是完成",
+        "语言、行动、验证、完成各有边界",
         "失败样本",
         "把漂移记录为可复盘的证据",
         "协同节奏",
         "校准、执行、检查、收尾",
         "囫囵语",
         "短词召回厚结构",
-        "核心结论：真正可复用的协同，不是把默会知识清空，而是把关键部分转译成公共结构。"
+        "核心结论：可复用协同来自默会知识的提取、命名、验证和写回。"
       ]
     },
     {
@@ -409,7 +409,7 @@
       "density": "medium",
       "primary_pattern": "transformation-logic",
       "supporting_patterns": ["three-zone", "relation-arrow", "metric-row", "conclusion-band"],
-      "thesis": "协同升级的关键不是能力突然跃迁，而是把混乱信号转成双方都能还原的厚结构。",
+      "thesis": "协同升级要把混乱信号转成双方都能还原的厚结构。",
       "composition": {
         "dominant_structure": "三段式转化图，中间机制高亮，两侧状态通过箭头关系连接，底部指标和结论收束。",
         "not_card_grid": true,
@@ -443,9 +443,9 @@
           "emphasis": true,
           "insight": "把混在一起的动作拆成可验证的关口。",
           "bullets": [
-            "区分语言是不是行动",
-            "区分命名是不是理解",
-            "区分验证是不是完成"
+            "区分语言和行动",
+            "区分命名和理解",
+            "区分验证和完成"
           ],
           "essence": "共同校准"
         },
@@ -487,7 +487,7 @@
         "从信号到囫囵语的协同转化",
         "旧状态、边界机制与新语言之间的关键跃迁",
         "核心转化判断",
-        "协同升级的关键不是能力突然跃迁，而是把混乱信号转成双方都能还原的厚结构。",
+        "协同升级要把混乱信号转成双方都能还原的厚结构。",
         "旧状态",
         "混乱前进",
         "材料是散的，只有人能凭经验判断。",
@@ -498,9 +498,9 @@
         "中间机制",
         "边界校准",
         "把混在一起的动作拆成可验证的关口。",
-        "区分语言是不是行动",
-        "区分命名是不是理解",
-        "区分验证是不是完成",
+        "区分语言和行动",
+        "区分命名和理解",
+        "区分验证和完成",
         "共同校准",
         "新状态",
         "囫囵语调用",
